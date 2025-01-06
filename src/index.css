@@ -1,0 +1,98 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  place-items: center;
+  min-height: 100vh;
+  background-color: black;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    --font-primary: #ffffff;
+  }
+}
+
+@font-face {
+  font-family: 'Britti Sans';
+  src: url('/fonts/BrittiSansTrial-Bold-BF6757bfd4a96ed.otf') format('opentype');
+  font-weight: 700;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: 'Britti Sans';
+  src: url('/fonts/BrittiSansTrial-BoldItalic-BF6757bfd4a2285.otf') format('opentype');
+  font-weight: 700;
+  font-style: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Britti Sans';
+  src: url('/fonts/BrittiSansTrial-Light-BF6757bfd494951.otf') format('opentype');
+  font-weight: 200;
+  font-style: light;
+}
+
+@font-face {
+  font-family: 'Britti Sans';
+  src: url('/fonts/BrittiSansTrial-LightItalic-BF6757bfd48c7c7.otf') format('opentype');
+  font-weight: 200;
+  font-style: light;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Britti Sans';
+  src: url('/fonts/BrittiSansTrial-Regular-BF6757bfd47ffbf.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Britti Sans';
+  src: url('/fonts/BrittiSansTrial-RegularItalic-BF6757bfd44e013.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Britti Sans';
+  src: url('/fonts/BrittiSansTrial-Semibold-BF6757bfd443a8a.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Britti Sans';
+  src: url('/fonts/BrittiSansTrial-SemiboldItalic-BF6757bfd411c3a.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-style: italic;
+}
