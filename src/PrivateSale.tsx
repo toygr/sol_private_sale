@@ -82,51 +82,51 @@ const PrivateSale = () => {
             <p className="p-4 pt-0 text-[#A6A6A6] font-medium text-base text-left">Vesting Timeline</p>
             <div className="grid grid-cols-1 gap-2.5 pt-1 pb-6">
               <div className="bg-[#0C0C0C]/50 border border-[#191919] rounded-xl p-4 flex justify-between ">
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-left">
                   <p className="text-[#FFFFFF]/50 font-medium text-sm">Initial Unlock</p>
                   <p className="text-[#FFFFFF] font-medium text-sm">01 Apr 2024 - 24 Apr 2024</p>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-right">
                   <p className="text-[#FFFFFF]/50 font-medium text-sm">Unlock Amount</p>
                   <p className="text-[#26D2A0] font-medium text-sm">1,500 Tokens (15%)</p>
                 </div>
               </div>
               <div className="bg-[#0C0C0C]/50 border border-[#191919] rounded-xl p-4 flex justify-between ">
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-left">
                   <p className="text-[#FFFFFF]/50 font-medium text-sm">Initial Unlock</p>
                   <p className="text-[#FFFFFF] font-medium text-sm">01 Apr 2024 - 24 Apr 2024</p>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-right">
                   <p className="text-[#FFFFFF]/50 font-medium text-sm">Unlock Amount</p>
                   <p className="text-[#26D2A0] font-medium text-sm">1,500 Tokens (15%)</p>
                 </div>
               </div>
               <div className="bg-[#0C0C0C]/50 border border-[#191919] rounded-xl p-4 flex justify-between ">
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-left">
                   <p className="text-[#FFFFFF]/50 font-medium text-sm">Initial Unlock</p>
                   <p className="text-[#FFFFFF] font-medium text-sm">01 Apr 2024 - 24 Apr 2024</p>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-right">
                   <p className="text-[#FFFFFF]/50 font-medium text-sm">Unlock Amount</p>
                   <p className="text-[#26D2A0] font-medium text-sm">1,500 Tokens (15%)</p>
                 </div>
               </div>
               <div className="bg-[#0C0C0C]/50 border border-[#191919] rounded-xl p-4 flex justify-between ">
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-left">
                   <p className="text-[#FFFFFF]/50 font-medium text-sm">Initial Unlock</p>
                   <p className="text-[#FFFFFF] font-medium text-sm">01 Apr 2024 - 24 Apr 2024</p>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-right">
                   <p className="text-[#FFFFFF]/50 font-medium text-sm">Unlock Amount</p>
                   <p className="text-[#26D2A0] font-medium text-sm">1,500 Tokens (15%)</p>
                 </div>
               </div>
               <div className="bg-[#0C0C0C]/50 border border-[#191919] rounded-xl p-4 flex justify-between ">
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-left">
                   <p className="text-[#FFFFFF]/50 font-medium text-sm">Initial Unlock</p>
                   <p className="text-[#FFFFFF] font-medium text-sm">01 Apr 2024 - 24 Apr 2024</p>
                 </div>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-right">
                   <p className="text-[#FFFFFF]/50 font-medium text-sm">Unlock Amount</p>
                   <p className="text-[#26D2A0] font-medium text-sm">1,500 Tokens (15%)</p>
                 </div>
