@@ -18,6 +18,8 @@ body {
   place-items: center;
   min-height: 100vh;
   background-color: black;
+  background-image: url('/texture.png');
+  position: relative;
 }
 
 @media (prefers-color-scheme: light) {
@@ -95,4 +97,8 @@ body {
   font-weight: 600;
   font-style: normal;
   font-style: italic;
+}
+
+.main {
+  background-image: url('/texture1.png');
 }

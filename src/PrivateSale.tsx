@@ -1,12 +1,17 @@
 const PrivateSale = () => {
   return (
-    <div className="pt-10 font-britti">
+    <div className="pt-[158px] pb-[135px] font-britti">
       <div className="flex items-center justify-between text-fontPrimary">
         <h1 className="text-[32px] font-semibold">Token Private Sale</h1>
         <button className="bg-gradient-to-b from-[#26D2A0] to-[#027E5A] rounded-xl px-7 py-3.5 border border-[#FFFFFF38] text-base font-semibold">Select Wallet</button>
       </div>
 
-      <div className="flex flex-col gap-5 mt-12 rounded-[40px] border border-[#1B1B1D] bg-[#020202] px-3 pb-3">
+      <div className="flex flex-col gap-5 mt-12 rounded-[40px] border border-[#1B1B1D] bg-[#020202] px-3 pb-3 main relative">
+    
+        <div className="absolute -top-3 -left-3 p-8 blur-3xl bg-[#FFFFFF]">
+          
+        </div>
+
         <div className="px-4">
           <div className="flex flex-col items-start justify-center px-4">
             <div className="border-t-[3px] border-[#FFFFFF] inline-block py-5">
@@ -38,7 +43,7 @@ const PrivateSale = () => {
               <img src="/SOL.png" className="w-6 h-6" />
               Pay with SOL
             </button>
-            <button className="w-full bg-[#323233] border border-[#4E4E4E] rounded-xl flex items-center justify-center gap-3 text-[#DADADA] font-medium text-sm py-3">
+            <button className="w-full bg-gradient-to-b from-[#323233] to-[#FFFFFF]/25 border border-[#4E4E4E] rounded-xl flex items-center justify-center gap-3 text-[#DADADA] font-medium text-sm py-3">
               <img src="/USDT.png" className="w-6 h-6" />
               Pay with USDT
             </button>
@@ -75,7 +80,7 @@ const PrivateSale = () => {
               </div>
             </div>
           </div>
-          
+
           <hr className="my-[52px] border-[#FFFFFF]/20 border-dashed" />
 
           <div>
@@ -136,6 +141,22 @@ const PrivateSale = () => {
           </div>
         </div>
       </div>
+
+      <div className="absolute top-[60px] left-0 w-full border-t-2 border-[#FFFFFF14]"></div>
+      <div className="absolute bottom-[60px] left-0 w-full border-t-2 border-[#FFFFFF14]"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-[560px] h-full border-l-2 border-[#FFFFFF14]">
+        <div className="relative h-full">
+          <div className="absolute top-[60px] -translate-x-[8px] -translate-y-[6px] w-2.5 h-2.5 border-2 border-[#FFFFFF14] box-content bg-[#000000] rounded-sm"></div>
+          <div className="absolute bottom-[60px] -translate-x-[8px] translate-y-[6px] w-2.5 h-2.5 border-2 border-[#FFFFFF14] box-content bg-[#000000] rounded-sm"></div>
+        </div>
+      </div>
+      <div className="absolute top-0 left-1/2 translate-x-[560px] h-full border-l-2 border-[#FFFFFF14]">
+        <div className="relative h-full">
+          <div className="absolute top-[60px] -translate-x-[8px] -translate-y-[6px] w-2.5 h-2.5 border-2 border-[#FFFFFF14] box-content bg-[#000000] rounded-sm"></div>
+          <div className="absolute bottom-[60px] -translate-x-[8px] translate-y-[6px] w-2.5 h-2.5 border-2 border-[#FFFFFF14] box-content bg-[#000000] rounded-sm"></div>
+        </div>
+      </div>
+
     </div>
   )
 }
