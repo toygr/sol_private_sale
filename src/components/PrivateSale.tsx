@@ -3,7 +3,7 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { useWalletMultiButton } from '@solana/wallet-adapter-base-ui';
 import { useEffect, useMemo, useState } from 'react';
 import { getCurrentTimestamp, getUserInfoPDA, getVestingPDA } from '../services/solana';
-import { getOrCreateAssociatedTokenAccount, GlobalVars, timestamp2date } from '../utils';
+import { getOrCreateAssociatedTokenAccount, timestamp2date } from '../utils';
 import { PublicKey } from '@solana/web3.js';
 import { connection, MINT_ADDRESS, program, USDT_MINT_ADDRESS } from '../anchor/setup';
 import { useWallet } from "@solana/wallet-adapter-react";
