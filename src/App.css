@@ -40,3 +40,6 @@
 .read-the-docs {
   color: #888;
 }
+.wallet-adapter-button.wallet-adapter-button-trigger:hover {
+  opacity: 0.8;
+}

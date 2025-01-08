@@ -1,18 +1,27 @@
 {
-  "name": "my-react-app",
+  "name": "sol-private-sale",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host --port 8000",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@coral-xyz/anchor": "^0.30.1",
+    "@solana/spl-token": "^0.4.9",
+    "@solana/wallet-adapter-base-ui": "^0.1.2",
+    "@solana/wallet-adapter-react": "^0.15.35",
+    "@solana/wallet-adapter-react-ui": "^0.9.35",
+    "@solana/wallet-adapter-wallets": "^0.19.32",
+    "@solana/web3.js": "^1.98.0",
     "lucide-react": "^0.456.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-toastify": "^11.0.2",
+    "vite-plugin-node-polyfills": "^0.22.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
@@ -29,5 +38,9 @@
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.11.0",
     "vite": "^5.4.10"
+  },
+  "resolutions": {
+    "@solana/web3.js": "^1.98.0",
+    "bs58": "^5.0.0"
   }
 }
