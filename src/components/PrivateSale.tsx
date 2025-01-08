@@ -43,6 +43,7 @@ const PrivateSale = () => {
   const [claimableAmount, setClaimableAmount] = useState<number>(0)
   useEffect(() => {
     getVestingPDA().then(pda => setVestingPDA(pda))
+    getCurrentTimestamp()
   }, [])
   useEffect(() => {
     if (!publicKey) {

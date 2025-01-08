@@ -37,9 +37,4 @@ export async function getOrCreateAssociatedTokenAccount(pubkey: anchor.web3.Publ
     }, "confirmed");
     return associatedAddress;
 }
-export async function getCurrentTimestamp() {
-    const slot = await connection.getSlot('finalized');
-    const blockTime = await connection.getBlockTime(slot) || 0
-    console.log(blockTime, 'Latest block timestamp:', new Date(blockTime * 1000).toUTCString());
-}
 export const timestamp2date = (timestamp_ms: number) => new Date(timestamp_ms).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' })
