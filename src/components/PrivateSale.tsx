@@ -43,8 +43,8 @@ const PrivateSale = () => {
           </div>
           <hr className=" border-[#FFFFFF]/20 border-dashed" />
 
-          <div className="grid grid-cols-2 px-4 pb-8 pt-7">
-            <div className="flex flex-col items-start justify-between gap-3">
+          <div className="flex w-full px-4 pb-8 pt-7">
+            <div className="flex w-full flex-col items-start justify-start gap-3">
               <span className="text-[#FFFFFF]/50 font-medium text-sm pl-2 border-l border-[#878787]">Sale Period</span>
               <span className="text-[#FFFFFF] font-medium text-[20px] pl-2 border-l border-[#FFFFFF38]">
                 {vestingPDA ? timestamp2date(parseInt(vestingPDA.startTime) * 1000) : "-"}
@@ -52,9 +52,12 @@ const PrivateSale = () => {
                 {vestingPDA ? timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)) * 1000) : "-"}
               </span>
             </div>
-            <div className="flex flex-col items-start gap-3">
+            <div className="flex w-full flex-col items-start gap-3 text-left">
               <span className="text-[#FFFFFF]/50 font-medium text-sm pl-2 border-l border-[#878787]">Token Price</span>
-              <span className="text-[#FFFFFF] font-medium text-[20px] pl-2 border-l border-[#FFFFFF38]">1 Token = $0.025</span>
+              <div className="text-[#FFFFFF] font-medium text-[20px] pl-2 border-l border-[#FFFFFF38]">
+                1 Token = $0.025 <br />
+                <span className='text-[14px] text-white/50'>1% discount if providing refer code</span>
+              </div>
             </div>
           </div>
           <CountDown />
