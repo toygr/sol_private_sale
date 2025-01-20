@@ -1,14 +1,14 @@
 import PrivateSale from './components/PrivateSale'
-import SolanaWalletProvider from './store/solana'
-
 import './App.css'
+import { StoreProvider } from './store'
+import SolanaWalletProvider from './store/SolanaWalletProvider'
 function App() {
   return (
-    <>
-      <SolanaWalletProvider>
+    <SolanaWalletProvider>
+      <StoreProvider>
         <PrivateSale />
-      </SolanaWalletProvider>
-    </>
+      </StoreProvider>
+    </SolanaWalletProvider>
   )
 }
 export default App

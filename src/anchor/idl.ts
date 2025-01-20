@@ -1,5 +1,5 @@
 export type PrivateVesting = {
-  "address": "2GUZbU4exXi8a7kwwCCjeWkKpTZv43bYRmskBRVLBzZT",
+  "address": "5FLnhERh6vAXJcFk1xVbGcy8abmDejDmjy6WuL4d2bMu",
   "metadata": {
     "name": "privateVesting",
     "version": "0.1.0",
@@ -8,16 +8,16 @@ export type PrivateVesting = {
   },
   "instructions": [
     {
-      "name": "allowClaim",
+      "name": "buyToken",
       "discriminator": [
-        93,
-        153,
-        185,
-        37,
-        109,
-        118,
-        227,
-        134
+        138,
+        127,
+        14,
+        91,
+        38,
+        87,
+        115,
+        105
       ],
       "accounts": [
         {
@@ -159,12 +159,12 @@ export type PrivateVesting = {
           "type": "u64"
         },
         {
-          "name": "isInvestor",
+          "name": "paySol",
           "type": "bool"
         },
         {
-          "name": "paySol",
-          "type": "bool"
+          "name": "referCode",
+          "type": "u32"
         }
       ]
     },
@@ -300,6 +300,86 @@ export type PrivateVesting = {
         {
           "name": "tokenProgram",
           "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "giveToken",
+      "discriminator": [
+        195,
+        204,
+        252,
+        168,
+        238,
+        234,
+        238,
+        193
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true
+        },
+        {
+          "name": "vesting",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  101,
+                  115,
+                  116,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "userInfo",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  95,
+                  105,
+                  110,
+                  102,
+                  111
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
@@ -546,7 +626,11 @@ export type PrivateVesting = {
           "type": "u64"
         },
         {
-          "name": "vestingDuration",
+          "name": "vestingDurationShort",
+          "type": "u64"
+        },
+        {
+          "name": "vestingDurationLong",
           "type": "u64"
         },
         {
@@ -632,6 +716,11 @@ export type PrivateVesting = {
       "code": 6006,
       "name": "exceedsVestingAmount",
       "msg": "Exceeds total vesting amount"
+    },
+    {
+      "code": 6007,
+      "name": "codeCountOverflow",
+      "msg": "Code count overflow"
     }
   ],
   "types": [
@@ -755,6 +844,10 @@ export type PrivateVesting = {
           {
             "name": "claimedAmount",
             "type": "u64"
+          },
+          {
+            "name": "referCode",
+            "type": "u32"
           }
         ]
       }
@@ -806,7 +899,11 @@ export type PrivateVesting = {
             "type": "u64"
           },
           {
-            "name": "vestingDuration",
+            "name": "vestingDurationShort",
+            "type": "u64"
+          },
+          {
+            "name": "vestingDurationLong",
             "type": "u64"
           },
           {
@@ -814,20 +911,28 @@ export type PrivateVesting = {
             "type": "u64"
           },
           {
-            "name": "investorClaimed",
+            "name": "claimedAmount",
             "type": "u64"
           },
           {
-            "name": "communityClaimed",
-            "type": "u64"
+            "name": "referCodes",
+            "type": {
+              "vec": "u32"
+            }
+          },
+          {
+            "name": "referAmounts",
+            "type": {
+              "vec": "u64"
+            }
           }
         ]
       }
     }
   ]
-};
+}
 export const IDL: PrivateVesting = {
-  "address": "2GUZbU4exXi8a7kwwCCjeWkKpTZv43bYRmskBRVLBzZT",
+  "address": "5FLnhERh6vAXJcFk1xVbGcy8abmDejDmjy6WuL4d2bMu",
   "metadata": {
     "name": "privateVesting",
     "version": "0.1.0",
@@ -836,16 +941,16 @@ export const IDL: PrivateVesting = {
   },
   "instructions": [
     {
-      "name": "allowClaim",
+      "name": "buyToken",
       "discriminator": [
-        93,
-        153,
-        185,
-        37,
-        109,
-        118,
-        227,
-        134
+        138,
+        127,
+        14,
+        91,
+        38,
+        87,
+        115,
+        105
       ],
       "accounts": [
         {
@@ -987,12 +1092,12 @@ export const IDL: PrivateVesting = {
           "type": "u64"
         },
         {
-          "name": "isInvestor",
+          "name": "paySol",
           "type": "bool"
         },
         {
-          "name": "paySol",
-          "type": "bool"
+          "name": "referCode",
+          "type": "u32"
         }
       ]
     },
@@ -1128,6 +1233,86 @@ export const IDL: PrivateVesting = {
         {
           "name": "tokenProgram",
           "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "giveToken",
+      "discriminator": [
+        195,
+        204,
+        252,
+        168,
+        238,
+        234,
+        238,
+        193
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true
+        },
+        {
+          "name": "vesting",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  101,
+                  115,
+                  116,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "userInfo",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  95,
+                  105,
+                  110,
+                  102,
+                  111
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
@@ -1374,7 +1559,11 @@ export const IDL: PrivateVesting = {
           "type": "u64"
         },
         {
-          "name": "vestingDuration",
+          "name": "vestingDurationShort",
+          "type": "u64"
+        },
+        {
+          "name": "vestingDurationLong",
           "type": "u64"
         },
         {
@@ -1460,6 +1649,11 @@ export const IDL: PrivateVesting = {
       "code": 6006,
       "name": "exceedsVestingAmount",
       "msg": "Exceeds total vesting amount"
+    },
+    {
+      "code": 6007,
+      "name": "codeCountOverflow",
+      "msg": "Code count overflow"
     }
   ],
   "types": [
@@ -1583,6 +1777,10 @@ export const IDL: PrivateVesting = {
           {
             "name": "claimedAmount",
             "type": "u64"
+          },
+          {
+            "name": "referCode",
+            "type": "u32"
           }
         ]
       }
@@ -1634,7 +1832,11 @@ export const IDL: PrivateVesting = {
             "type": "u64"
           },
           {
-            "name": "vestingDuration",
+            "name": "vestingDurationShort",
+            "type": "u64"
+          },
+          {
+            "name": "vestingDurationLong",
             "type": "u64"
           },
           {
@@ -1642,15 +1844,23 @@ export const IDL: PrivateVesting = {
             "type": "u64"
           },
           {
-            "name": "investorClaimed",
+            "name": "claimedAmount",
             "type": "u64"
           },
           {
-            "name": "communityClaimed",
-            "type": "u64"
+            "name": "referCodes",
+            "type": {
+              "vec": "u32"
+            }
+          },
+          {
+            "name": "referAmounts",
+            "type": {
+              "vec": "u64"
+            }
           }
         ]
       }
     }
   ]
-};
+}

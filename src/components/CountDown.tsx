@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react"
 import { getVestingPDA } from "../services/solana"
 import { GlobalVars } from "../utils"
+import { useVestingPDA } from "../store"
 
-const CountDown = ({ vestingPDA }: { vestingPDA: Awaited<ReturnType<typeof getVestingPDA>> | null }) => {
+const CountDown = () => {
+    const { vestingPDA } = useVestingPDA()
     const [data, setData] = useState({
         days: 0,
         hours: 0,
