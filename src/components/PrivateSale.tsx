@@ -21,7 +21,7 @@ const PrivateSale = () => {
   }, [buttonState, publicKey]);
 
   return (
-    <div className="pt-[158px] pb-[135px] font-britti">
+    <div className="pt-[158px] pb-[135px] px-2 font-britti">
       <div className="flex items-center justify-between text-fontPrimary">
         <h1 className="text-[32px] font-semibold">Token Private Sale</h1>
         <WalletMultiButton style={{ backgroundImage: "linear-gradient(rgb(38, 210, 160), rgb(2, 126, 90))" }} endIcon={
@@ -69,13 +69,13 @@ const PrivateSale = () => {
 
       <div className="absolute top-[60px] left-0 w-full border-t-2 border-[#FFFFFF14]"></div>
       <div className="absolute bottom-[60px] left-0 w-full border-t-2 border-[#FFFFFF14]"></div>
-      <div className="absolute top-0 left-1/2 -translate-x-[560px] h-full border-l-2 border-[#FFFFFF14]">
+      <div className="absolute top-0 left-1/2 h-full border-l-2 border-[#FFFFFF14]" style={{ transform: `translate(max(-560px,-50vw))` }}>
         <div className="relative h-full">
           <div className="absolute top-[60px] -translate-x-[8px] -translate-y-[6px] w-2.5 h-2.5 border-2 border-[#FFFFFF14] box-content bg-[#000000] rounded-sm"></div>
           <div className="absolute bottom-[60px] -translate-x-[8px] translate-y-[6px] w-2.5 h-2.5 border-2 border-[#FFFFFF14] box-content bg-[#000000] rounded-sm"></div>
         </div>
       </div>
-      <div className="absolute top-0 left-1/2 translate-x-[560px] h-full border-l-2 border-[#FFFFFF14]">
+      <div className="absolute top-0 left-1/2 h-full border-l-2 border-[#FFFFFF14]" style={{ transform: `translate(min(560px,49vw))` }}>
         <div className="relative h-full">
           <div className="absolute top-[60px] -translate-x-[8px] -translate-y-[6px] w-2.5 h-2.5 border-2 border-[#FFFFFF14] box-content bg-[#000000] rounded-sm"></div>
           <div className="absolute bottom-[60px] -translate-x-[8px] translate-y-[6px] w-2.5 h-2.5 border-2 border-[#FFFFFF14] box-content bg-[#000000] rounded-sm"></div>

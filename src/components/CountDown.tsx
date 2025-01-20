@@ -36,19 +36,19 @@ const CountDown = () => {
             {vestingPDA &&
                 <div className="w-full flex items-center justify-center gap-10" style={{ fontFamily: "sans-serif" }}>
                     <div className="flex flex-col">
-                        <span className="text-8xl">{data.days}</span>
+                        <span className="text-8xl max-sm:text-4xl">{data.days}</span>
                         <span className="uppercase">Days</span>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-8xl">{data.hours.toString().padStart(2, "0")}</span>
+                        <span className="text-8xl max-sm:text-4xl">{data.hours.toString().padStart(2, "0")}</span>
                         <span className="uppercase">Hours</span>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-8xl">{data.minutes.toString().padStart(2, "0")}</span>
+                        <span className="text-8xl max-sm:text-4xl">{data.minutes.toString().padStart(2, "0")}</span>
                         <span className="uppercase">Minutes</span>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-8xl">{data.seconds.toString().padStart(2, "0")}</span>
+                        <span className="text-8xl max-sm:text-4xl">{data.seconds.toString().padStart(2, "0")}</span>
                         <span className="uppercase">Seconds</span>
                     </div>
                 </div>
