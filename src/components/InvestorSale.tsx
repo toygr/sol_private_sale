@@ -4,7 +4,7 @@ import { promiseToast, showToast } from "../utils/toast";
 import { PublicKey } from "@solana/web3.js";
 import { MINT_ADDRESS, program, USDT_MINT_ADDRESS } from "../anchor/setup";
 import { timestamp2date } from "../utils";
-import { useAmounts, useSaleEnded, useUserPDA, useVestingPDA, useWalletPubKeyState } from "../store";
+import { useAmounts, useReferCode, useSaleEnded, useUserPDA, useVestingPDA, useWalletPubKeyState } from "../store";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
 
@@ -16,11 +16,8 @@ const InvestorSale = () => {
     const { buyableAmount, claimableAmount, unlockedAmount, vestedRate } = useAmounts()
     const [buyAmount, setBuyAmount] = useState<number>(0)
     const [initialUnlock, setInitialUnlock] = useState<number>(0)
-    const [referrerCode, setReferrerCode] = useState<string>("")
+    const { referrerCode, setReferrerCode } = useReferCode()
     const { sendTransaction } = useWallet()
-    useEffect(() => {
-        setReferrerCode("")
-    }, [publicKey])
     useEffect(() => {
         if (!userPDA) return
         if (!vestingPDA) return

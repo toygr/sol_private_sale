@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react"
 import * as anchor from "@coral-xyz/anchor"
-import { useAmounts, useSaleEnded, useVestingPDA, useWalletPubKeyState } from "../store"
+import { useAmounts, useReferCode, useSaleEnded, useVestingPDA, useWalletPubKeyState } from "../store"
 import { promiseToast, showToast } from "../utils/toast"
 import { program } from "../anchor/setup"
 import { PublicKey } from "@solana/web3.js"
@@ -14,6 +14,7 @@ const AdminView = () => {
     const { sendTransaction } = useWallet()
     const { vestingPDA, setVestingPDA } = useVestingPDA()
     const { isSaleEnded } = useSaleEnded()
+    const { referrerCode, setReferrerCode } = useReferCode()
     const [giveAmount, setGiveAmount] = useState(0)
     const [giveAddress, setGiveAddress] = useState("")
     const [referInfo, setReferInfo] = useState<{ code: number; amount: number; }[]>([])
@@ -36,8 +37,17 @@ const AdminView = () => {
             showToast("Input address correctly", "warn")
             return
         }
+        let code = 0
+        if (referrerCode !== "") {
+            if (/^(0|[1-9]\d*)$/.test(referrerCode)) {
+                code = parseInt(referrerCode)
+            } else {
+                showToast("Referral code type mismatch", "error")
+                return
+            }
+        }
         promiseToast(new Promise(async (resolve, reject) => {
-            const tx = await program.methods.giveToken(new anchor.BN(giveAmount * 1_000_000_000)).accounts({
+            const tx = await program.methods.giveToken(new anchor.BN(giveAmount * 1_000_000_000), code).accounts({
                 admin: publicKey,
                 user: new PublicKey(giveAddress)
             }).transaction()
@@ -59,16 +69,20 @@ const AdminView = () => {
         <>
             <div className="border-[1px] border-[#1B1B1D] rounded-[28px] p-4 flex flex-col gap-4">
                 <p className="p-4 text-[#A6A6A6] font-medium text-base text-left">Private Sale <span className="italic text-red-700">Admin Page</span></p>
+                <div className="w-full text-left">
+                    <span>Investor Address</span>
+                    <input onChange={e => setGiveAddress(e.target.value)} value={giveAddress} placeholder="Solana address" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl disabled:cursor-not-allowed disabled:text-white/50 disabled:font-bold" />
+                </div>
                 <div className="flex items-end w-full gap-2">
-                    <div className="w-full text-left">
-                        <span>Investor Address</span>
-                        <input onChange={e => setGiveAddress(e.target.value)} value={giveAddress} placeholder="Solana address" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl disabled:cursor-not-allowed disabled:text-white/50 disabled:font-bold" />
-                    </div>
                     <div className="w-full">
                         <p className="text-left">
                             Available amount you can give: {buyableAmount}
                         </p>
                         <input onChange={e => setGiveAmount(Number(e.target.value))} value={giveAmount} placeholder="Enter Amount" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl" />
+                    </div>
+                    <div className="text-left">
+                        <span>Referrer Code(Optional)</span>
+                        <input onChange={e => setReferrerCode(e.target.value.trim())} value={referrerCode} placeholder="eg:12345" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl disabled:cursor-not-allowed disabled:text-white/50 disabled:font-bold" />
                     </div>
                 </div>
                 <div className="flex justify-between gap-4">

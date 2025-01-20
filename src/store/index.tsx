@@ -10,6 +10,9 @@ type StoreType = {
     setUserPDA: React.Dispatch<React.SetStateAction<Awaited<ReturnType<typeof getUserInfoPDA>> | null>>,
     vestingPDA: Awaited<ReturnType<typeof getVestingPDA>> | null,
     setVestingPDA: React.Dispatch<React.SetStateAction<Awaited<ReturnType<typeof getVestingPDA>> | null>>,
+    referrerCode: string,
+    setReferrerCode: React.Dispatch<React.SetStateAction<string>>
+    ,
     unlockedAmount: number,
     buyableAmount: number,
     vestedRate: number,
@@ -23,6 +26,8 @@ const initialStoreValue: StoreType = {
     setUserPDA: () => { },
     vestingPDA: null,
     setVestingPDA: () => { },
+    referrerCode: "",
+    setReferrerCode: () => { },
     unlockedAmount: 0,
     buyableAmount: 0,
     vestedRate: 0,
@@ -33,6 +38,7 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
     const { publicKey, buttonState } = useWalletMultiButton({ onSelectWallet() { }, });
     const [isSaleEnded, setSaleEnded] = useState(false)
     const [userPDA, setUserPDA] = useState<Awaited<ReturnType<typeof getUserInfoPDA>> | null>(null)
+    const [referrerCode, setReferrerCode] = useState<string>("")
     const [unlockedAmount, setUnlockedAmount] = useState<number>(0)
     const [buyableAmount, setBuyableAmount] = useState<number>(0)
     const [vestedRate, setVestedRate] = useState<number>(0)
@@ -43,6 +49,7 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
         getCurrentTimestamp()
     }, [])
     useEffect(() => {
+        setReferrerCode("")
         if (!publicKey) {
             setUserPDA(null)
             return
@@ -77,7 +84,7 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
     }, [userPDA, vestingPDA])
     return (
         <Store.Provider value={{
-            publicKey, buttonState, isSaleEnded, userPDA, setUserPDA, unlockedAmount, buyableAmount, vestedRate, claimableAmount, vestingPDA, setVestingPDA
+            publicKey, buttonState, isSaleEnded, userPDA, setUserPDA, unlockedAmount, buyableAmount, vestedRate, claimableAmount, vestingPDA, setVestingPDA, referrerCode, setReferrerCode
         }}>
             {children}
         </Store.Provider>
@@ -94,6 +101,10 @@ export const useVestingPDA = () => ({
 export const useUserPDA = () => ({
     userPDA: useContext(Store).userPDA,
     setUserPDA: useContext(Store).setUserPDA,
+})
+export const useReferCode = () => ({
+    referrerCode: useContext(Store).referrerCode,
+    setReferrerCode: useContext(Store).setReferrerCode,
 })
 export const useAmounts = () => ({
     buyableAmount: useContext(Store).buyableAmount,

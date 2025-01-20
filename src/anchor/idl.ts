@@ -386,6 +386,10 @@ export type PrivateVesting = {
         {
           "name": "amount",
           "type": "u64"
+        },
+        {
+          "name": "referCode",
+          "type": "u32"
         }
       ]
     },
@@ -1319,6 +1323,10 @@ export const IDL: PrivateVesting = {
         {
           "name": "amount",
           "type": "u64"
+        },
+        {
+          "name": "referCode",
+          "type": "u32"
         }
       ]
     },
