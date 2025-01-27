@@ -1,5 +1,5 @@
 export type PrivateVesting = {
-  "address": "5FLnhERh6vAXJcFk1xVbGcy8abmDejDmjy6WuL4d2bMu",
+  "address": "3N6raCa8VUi2PgUQs4tWYdU9RHcmyTTkpE9DYyDmC48i",
   "metadata": {
     "name": "privateVesting",
     "version": "0.1.0",
@@ -90,8 +90,41 @@ export type PrivateVesting = {
                 "path": "admin"
               },
               {
-                "kind": "account",
-                "path": "tokenProgram"
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
               },
               {
                 "kind": "account",
@@ -183,7 +216,7 @@ export type PrivateVesting = {
       "accounts": [
         {
           "name": "mint",
-          "address": "JayAa3BPqCHb8wGDGiVH1UJJpm8AZYsUE8ut5NQi7sU"
+          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
         },
         {
           "name": "user",
@@ -246,8 +279,41 @@ export type PrivateVesting = {
                 "path": "vesting"
               },
               {
-                "kind": "account",
-                "path": "tokenProgram"
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
               },
               {
                 "kind": "account",
@@ -299,7 +365,7 @@ export type PrivateVesting = {
         },
         {
           "name": "tokenProgram",
-          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
       "args": [
@@ -441,8 +507,41 @@ export type PrivateVesting = {
                 "path": "vesting"
               },
               {
-                "kind": "account",
-                "path": "tokenProgram"
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
               },
               {
                 "kind": "account",
@@ -490,11 +589,11 @@ export type PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "JayAa3BPqCHb8wGDGiVH1UJJpm8AZYsUE8ut5NQi7sU"
+          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
         },
         {
           "name": "tokenProgram",
-          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
           "name": "associatedTokenProgram",
@@ -548,7 +647,7 @@ export type PrivateVesting = {
         {
           "name": "adminAta",
           "writable": true,
-          "address": "3D5E9GftEHM8gnXhZH6wSDXdF9QaY8EJ7Bo6a963eWNq"
+          "address": "FEGrS9JNR76eaBs74Qf3nCT2vzbTc9ZtCSBeSJgBP9ro"
         },
         {
           "name": "pdaAta",
@@ -560,8 +659,41 @@ export type PrivateVesting = {
                 "path": "vesting"
               },
               {
-                "kind": "account",
-                "path": "tokenProgram"
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
               },
               {
                 "kind": "account",
@@ -613,11 +745,11 @@ export type PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "JayAa3BPqCHb8wGDGiVH1UJJpm8AZYsUE8ut5NQi7sU"
+          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
         },
         {
           "name": "tokenProgram",
-          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
       "args": [
@@ -936,7 +1068,7 @@ export type PrivateVesting = {
   ]
 }
 export const IDL: PrivateVesting = {
-  "address": "5FLnhERh6vAXJcFk1xVbGcy8abmDejDmjy6WuL4d2bMu",
+  "address": "3N6raCa8VUi2PgUQs4tWYdU9RHcmyTTkpE9DYyDmC48i",
   "metadata": {
     "name": "privateVesting",
     "version": "0.1.0",
@@ -1027,8 +1159,41 @@ export const IDL: PrivateVesting = {
                 "path": "admin"
               },
               {
-                "kind": "account",
-                "path": "tokenProgram"
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
               },
               {
                 "kind": "account",
@@ -1120,7 +1285,7 @@ export const IDL: PrivateVesting = {
       "accounts": [
         {
           "name": "mint",
-          "address": "JayAa3BPqCHb8wGDGiVH1UJJpm8AZYsUE8ut5NQi7sU"
+          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
         },
         {
           "name": "user",
@@ -1183,8 +1348,41 @@ export const IDL: PrivateVesting = {
                 "path": "vesting"
               },
               {
-                "kind": "account",
-                "path": "tokenProgram"
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
               },
               {
                 "kind": "account",
@@ -1236,7 +1434,7 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "tokenProgram",
-          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
       "args": [
@@ -1378,8 +1576,41 @@ export const IDL: PrivateVesting = {
                 "path": "vesting"
               },
               {
-                "kind": "account",
-                "path": "tokenProgram"
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
               },
               {
                 "kind": "account",
@@ -1427,11 +1658,11 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "JayAa3BPqCHb8wGDGiVH1UJJpm8AZYsUE8ut5NQi7sU"
+          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
         },
         {
           "name": "tokenProgram",
-          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
           "name": "associatedTokenProgram",
@@ -1485,7 +1716,7 @@ export const IDL: PrivateVesting = {
         {
           "name": "adminAta",
           "writable": true,
-          "address": "3D5E9GftEHM8gnXhZH6wSDXdF9QaY8EJ7Bo6a963eWNq"
+          "address": "FEGrS9JNR76eaBs74Qf3nCT2vzbTc9ZtCSBeSJgBP9ro"
         },
         {
           "name": "pdaAta",
@@ -1497,8 +1728,41 @@ export const IDL: PrivateVesting = {
                 "path": "vesting"
               },
               {
-                "kind": "account",
-                "path": "tokenProgram"
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
               },
               {
                 "kind": "account",
@@ -1550,11 +1814,11 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "JayAa3BPqCHb8wGDGiVH1UJJpm8AZYsUE8ut5NQi7sU"
+          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
         },
         {
           "name": "tokenProgram",
-          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         }
       ],
       "args": [

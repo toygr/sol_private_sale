@@ -21,7 +21,7 @@ const InvestorSale = () => {
     useEffect(() => {
         if (!userPDA) return
         if (!vestingPDA) return
-        setInitialUnlock(parseInt(userPDA.totalAllocation) * 0.15 / 1_000_000_000);
+        setInitialUnlock(parseInt(userPDA.totalAllocation) * 0.15 / 1_000_000);
     }, [userPDA, vestingPDA])
     const buyToken = async (paySol: boolean) => {
         if (!publicKey) {
@@ -43,7 +43,7 @@ const InvestorSale = () => {
         }
         promiseToast(new Promise(async (resolve, reject) => {
             const userUsdtAta = await getOrCreateAssociatedTokenAccount(publicKey, new PublicKey(USDT_MINT_ADDRESS), sendTransaction, false)
-            const tx = await program.methods.buyToken(new anchor.BN(buyAmount * 1_000_000_000), paySol, code).accounts({
+            const tx = await program.methods.buyToken(new anchor.BN(buyAmount * 1_000_000), paySol, code).accounts({
                 user: publicKey,
                 priceUpdate: new PublicKey("7UVimffxr9ow1uXYxsr4LHAcV58mLzhmwaeKvJ1pjLiE"),
                 userUsdtAta,
@@ -69,8 +69,8 @@ const InvestorSale = () => {
             return
         }
         promiseToast(new Promise(async (resolve, reject) => {
-            const userAta = await getOrCreateAssociatedTokenAccount(publicKey, new PublicKey(MINT_ADDRESS), sendTransaction)
-            const tx = await program.methods.claimToken(new anchor.BN(claimableAmount * 1_000_000_000)).accounts({
+            const userAta = await getOrCreateAssociatedTokenAccount(publicKey, new PublicKey(MINT_ADDRESS), sendTransaction, false)
+            const tx = await program.methods.claimToken(new anchor.BN(claimableAmount * 1_000_000)).accounts({
                 user: publicKey,
                 userAta,
             }).transaction()
@@ -123,7 +123,7 @@ const InvestorSale = () => {
                         <div className="grid grid-cols-4 gap-3 pt-1">
                             <div className="bg-[#000000] border border-[#1B1B1D] rounded-xl p-4 flex flex-col items-start gap-3 relative">
                                 <p className="text-sm text-[#FFFFFF52]">Total Tokens</p>
-                                <p className="text-[20px] font-medium text-[#FFFFFF]">{parseInt(userPDA.totalAllocation) / 1000000000}</p>
+                                <p className="text-[20px] font-medium text-[#FFFFFF]">{parseInt(userPDA.totalAllocation) / 1000000}</p>
                                 <div className="absolute top-0 left-4 border-[1px] w-9 border-[#FFFFFF]"></div>
                             </div>
                             <div className="bg-[#000000] border border-[#1B1B1D] rounded-xl p-4 flex flex-col items-start gap-3 relative">
@@ -135,7 +135,7 @@ const InvestorSale = () => {
                             </div>
                             <div className="bg-[#000000] border border-[#1B1B1D] rounded-xl p-4 flex flex-col items-start gap-3 relative">
                                 <p className="text-sm text-[#FFFFFF52]">Claimed Tokens</p>
-                                <p className="text-[20px] font-medium text-[#FFFFFF]">{parseInt(userPDA.claimedAmount) / 1000000000}</p>
+                                <p className="text-[20px] font-medium text-[#FFFFFF]">{parseInt(userPDA.claimedAmount) / 1000000}</p>
                                 <div className="absolute top-0 left-4 border-[1px] w-9 border-[#FFFFFF]"></div>
                             </div>
                             <div className="bg-[#000000] border border-[#1B1B1D] rounded-xl p-4 flex flex-col items-start gap-3 relative">
@@ -169,7 +169,7 @@ const InvestorSale = () => {
                             <div className="bg-[#0C0C0C]/50 border border-[#191919] rounded-xl p-4 flex justify-between ">
                                 <div className="flex flex-col gap-3 text-left">
                                     <p className="text-[#FFFFFF]/50 font-medium text-sm">Vesting Period</p>
-                                    <p className="text-[#FFFFFF] font-medium text-sm">{timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)) * 1000)} - {timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration) + parseInt(vestingPDA.amount < new anchor.BN(100_000_000000000) ? vestingPDA.vestingDurationShort : vestingPDA.vestingDurationLong)) * 1000)}</p>
+                                    <p className="text-[#FFFFFF] font-medium text-sm">{timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)) * 1000)} - {timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration) + parseInt(vestingPDA.amount < new anchor.BN(100_000_000000) ? vestingPDA.vestingDurationShort : vestingPDA.vestingDurationLong)) * 1000)}</p>
                                 </div>
                                 <div className="flex flex-col gap-3 text-right">
                                     <p className="text-[#FFFFFF]/50 font-medium text-sm">Unlock Amount</p>

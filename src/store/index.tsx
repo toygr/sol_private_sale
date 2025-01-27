@@ -58,7 +58,7 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
     }, [publicKey])
     useEffect(() => {
         if (vestingPDA) {
-            setBuyableAmount((parseInt(vestingPDA.amount) - parseInt(vestingPDA.claimedAmount)) / 1000000000)
+            setBuyableAmount((parseInt(vestingPDA.amount) - parseInt(vestingPDA.claimedAmount)) / 1000000)
         } else {
             setBuyableAmount(0)
         }
@@ -73,12 +73,12 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
                 setSaleEnded(true)
             }
             const time_since_saleEnd = curTimestamp - tsp_saleEnd
-            const vesting_duration = parseInt(vestingPDA.amount < new anchor.BN(100_000_000000000) ? vestingPDA.vestingDurationShort : vestingPDA.vestingDurationLong)
+            const vesting_duration = parseInt(vestingPDA.amount < new anchor.BN(100_000_000000) ? vestingPDA.vestingDurationShort : vestingPDA.vestingDurationLong)
             const vested_rate = Math.min(time_since_saleEnd / vesting_duration, 1)
             setVestedRate(vested_rate)
             const vesting_amount = parseInt(userPDA.totalAllocation) * 0.85 * vested_rate
-            setUnlockedAmount(vesting_amount / 1_000_000_000)
-            const available_to_claim = (parseInt(userPDA.totalAllocation) * 0.15 + vesting_amount - parseInt(userPDA.claimedAmount)) / 1_000_000_000
+            setUnlockedAmount(vesting_amount / 1_000_000)
+            const available_to_claim = (parseInt(userPDA.totalAllocation) * 0.15 + vesting_amount - parseInt(userPDA.claimedAmount)) / 1_000_000
             setClaimableAmount(available_to_claim)
         })()
     }, [userPDA, vestingPDA])

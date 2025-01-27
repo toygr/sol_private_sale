@@ -25,12 +25,16 @@ const AdminView = () => {
         }
         setReferInfo(vestingPDA.referCodes.map((v, i) => ({
             code: v,
-            amount: parseInt(vestingPDA.referAmounts[i]) / 1000000000
+            amount: parseInt(vestingPDA.referAmounts[i]) / 1000000
         })))
     }, [vestingPDA])
     const giveToken = async () => {
         if (!publicKey) {
             showToast("Connect wallet first", "warn")
+            return
+        }
+        if (giveAmount > buyableAmount) {
+            showToast("Amount exceeds", "warn")
             return
         }
         if (giveAddress.trim() === "") {
@@ -47,7 +51,7 @@ const AdminView = () => {
             }
         }
         promiseToast(new Promise(async (resolve, reject) => {
-            const tx = await program.methods.giveToken(new anchor.BN(giveAmount * 1_000_000_000), code).accounts({
+            const tx = await program.methods.giveToken(new anchor.BN(giveAmount * 1_000_000), code).accounts({
                 admin: publicKey,
                 user: new PublicKey(giveAddress)
             }).transaction()
