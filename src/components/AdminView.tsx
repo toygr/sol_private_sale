@@ -69,31 +69,60 @@ const AdminView = () => {
             error: "Your operation failed."
         })
     }
+    const returnToken = async () => {
+        promiseToast(new Promise(async (resolve, reject) => {
+            const tx = await program.methods.returnToken().accounts({
+                user: publicKey
+            }).transaction()
+            await processTxInToast(
+                tx, sendTransaction,
+                () => setTimeout(
+                    () => {
+                        getVestingPDA().then(pda => setVestingPDA(pda))
+                    }, 1000),
+                resolve, reject)
+        }), {
+            pending: `Opening wallet...`,
+            error: "Your operation failed."
+        })
+    }
     return (
         <>
             <div className="border-[1px] border-[#1B1B1D] rounded-[28px] p-4 flex flex-col gap-4">
                 <p className="p-4 text-[#A6A6A6] font-medium text-base text-left">Private Sale <span className="italic text-red-700">Admin Page</span></p>
-                <div className="w-full text-left">
-                    <span>Investor Address</span>
-                    <input onChange={e => setGiveAddress(e.target.value)} value={giveAddress} placeholder="Solana address" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl disabled:cursor-not-allowed disabled:text-white/50 disabled:font-bold" />
-                </div>
-                <div className="flex items-end w-full gap-2">
-                    <div className="w-full">
-                        <p className="text-left">
-                            Available amount you can give: {buyableAmount}
-                        </p>
-                        <input onChange={e => setGiveAmount(Number(e.target.value))} value={giveAmount} placeholder="Enter Amount" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl" />
-                    </div>
-                    <div className="text-left">
-                        <span>Referrer Code(Optional)</span>
-                        <input onChange={e => setReferrerCode(e.target.value.trim())} value={referrerCode} placeholder="eg:12345" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl disabled:cursor-not-allowed disabled:text-white/50 disabled:font-bold" />
-                    </div>
-                </div>
-                <div className="flex justify-between gap-4">
-                    <button onClick={giveToken} className="w-full bg-[#0D4D0D] border border-[#1B1B1D] rounded-xl flex items-center justify-center gap-3 text-[#DADADA] font-medium text-sm py-3 hover:opacity-80 disabled:cursor-not-allowed" disabled={!publicKey || isSaleEnded} >
-                        Direct sale to investor
-                    </button>
-                </div>
+                {isSaleEnded ?
+                    <>
+                        <div className="flex justify-between gap-4">
+                            <button onClick={returnToken} className="w-full bg-[#0D4D0D] border border-[#1B1B1D] rounded-xl flex items-center justify-center gap-3 text-[#DADADA] font-medium text-sm py-3 hover:opacity-80 disabled:cursor-not-allowed" disabled={!publicKey || !isSaleEnded || buyableAmount <= 0} >
+                                Return unsold {buyableAmount} token in vault
+                            </button>
+                        </div>
+                    </>
+                    :
+                    <>
+                        <div className="w-full text-left">
+                            <span>Investor Address</span>
+                            <input onChange={e => setGiveAddress(e.target.value)} value={giveAddress} placeholder="Solana address" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl disabled:cursor-not-allowed disabled:text-white/50 disabled:font-bold" />
+                        </div>
+                        <div className="flex items-end w-full gap-2">
+                            <div className="w-full">
+                                <p className="text-left">
+                                    Available amount you can give: {buyableAmount}
+                                </p>
+                                <input onChange={e => setGiveAmount(Number(e.target.value))} value={giveAmount} placeholder="Enter Amount" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl" />
+                            </div>
+                            <div className="text-left">
+                                <span>Referrer Code(Optional)</span>
+                                <input onChange={e => setReferrerCode(e.target.value.trim())} value={referrerCode} placeholder="eg:12345" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl disabled:cursor-not-allowed disabled:text-white/50 disabled:font-bold" />
+                            </div>
+                        </div>
+                        <div className="flex justify-between gap-4">
+                            <button onClick={giveToken} className="w-full bg-[#0D4D0D] border border-[#1B1B1D] rounded-xl flex items-center justify-center gap-3 text-[#DADADA] font-medium text-sm py-3 hover:opacity-80 disabled:cursor-not-allowed" disabled={!publicKey || isSaleEnded} >
+                                Direct sale to investor
+                            </button>
+                        </div>
+                    </>
+                }
             </div>
             <div className="border-[1px] border-[#1B1B1D] rounded-[28px] p-4">
                 <div className="flex flex-col justify-center items-center">

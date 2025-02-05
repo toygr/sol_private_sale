@@ -1,9 +1,8 @@
 import * as anchor from "@coral-xyz/anchor";
-import { getOrCreateAssociatedTokenAccount, getUserInfoPDA, getVestingPDA, processTxInToast } from "../services/solana"
+import { getUserInfoPDA, getVestingPDA, processTxInToast } from "../services/solana"
 import { promiseToast, showToast } from "../utils/toast";
-import { PublicKey } from "@solana/web3.js";
-import { MINT_ADDRESS, program, USDT_MINT_ADDRESS } from "../anchor/setup";
-import { timestamp2date } from "../utils";
+import { program } from "../anchor/setup";
+import { getInitialUnlockRate, getVestingDuration, timestamp2date } from "../utils";
 import { useAmounts, useReferCode, useSaleEnded, useUserPDA, useVestingPDA, useWalletPubKeyState } from "../store";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react";
@@ -16,12 +15,15 @@ const InvestorSale = () => {
     const { buyableAmount, claimableAmount, unlockedAmount, vestedRate } = useAmounts()
     const [buyAmount, setBuyAmount] = useState<number>(0)
     const [initialUnlock, setInitialUnlock] = useState<number>(0)
+    const [initialUnlockRate, setInitialUnlockRate] = useState<number>(0)
     const { referrerCode, setReferrerCode } = useReferCode()
     const { sendTransaction } = useWallet()
     useEffect(() => {
         if (!userPDA) return
         if (!vestingPDA) return
-        setInitialUnlock(parseInt(userPDA.totalAllocation) * 0.15 / 1_000_000);
+        const rate = getInitialUnlockRate(userPDA.totalAllocation)
+        setInitialUnlockRate(rate * 100)
+        setInitialUnlock(parseInt(userPDA.totalAllocation) * rate / 1_000_000);
     }, [userPDA, vestingPDA])
     const buyToken = async (paySol: boolean) => {
         if (!publicKey) {
@@ -42,11 +44,8 @@ const InvestorSale = () => {
             }
         }
         promiseToast(new Promise(async (resolve, reject) => {
-            const userUsdtAta = await getOrCreateAssociatedTokenAccount(publicKey, new PublicKey(USDT_MINT_ADDRESS), sendTransaction, false)
             const tx = await program.methods.buyToken(new anchor.BN(buyAmount * 1_000_000), paySol, code).accounts({
                 user: publicKey,
-                priceUpdate: new PublicKey("7UVimffxr9ow1uXYxsr4LHAcV58mLzhmwaeKvJ1pjLiE"),
-                userUsdtAta,
             }).transaction()
             await processTxInToast(
                 tx, sendTransaction,
@@ -69,10 +68,8 @@ const InvestorSale = () => {
             return
         }
         promiseToast(new Promise(async (resolve, reject) => {
-            const userAta = await getOrCreateAssociatedTokenAccount(publicKey, new PublicKey(MINT_ADDRESS), sendTransaction, false)
             const tx = await program.methods.claimToken(new anchor.BN(claimableAmount * 1_000_000)).accounts({
                 user: publicKey,
-                userAta,
             }).transaction()
             await processTxInToast(
                 tx, sendTransaction,
@@ -130,7 +127,7 @@ const InvestorSale = () => {
                                 <p className="text-sm text-[#FFFFFF52]">Initial Unlock</p>
                                 <p className="text-[20px] font-medium text-[#FFFFFF]">
                                     {initialUnlock}
-                                    <span className="text-[#FFFFFF52]">(15%)</span></p>
+                                    <span className="text-[#FFFFFF52]">({initialUnlockRate}%)</span></p>
                                 <div className="absolute top-0 left-4 border-[1px] w-9 border-[#FFFFFF]"></div>
                             </div>
                             <div className="bg-[#000000] border border-[#1B1B1D] rounded-xl p-4 flex flex-col items-start gap-3 relative">
@@ -161,7 +158,7 @@ const InvestorSale = () => {
                                 </div>
                                 <div className="flex flex-col gap-3 text-right">
                                     <p className="text-[#FFFFFF]/50 font-medium text-sm">Unlock Amount</p>
-                                    <p className="text-[#26D2A0] font-medium text-sm">{initialUnlock} Tokens (15%)</p>
+                                    <p className="text-[#26D2A0] font-medium text-sm">{initialUnlock} Tokens ({initialUnlockRate}%)</p>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +166,11 @@ const InvestorSale = () => {
                             <div className="bg-[#0C0C0C]/50 border border-[#191919] rounded-xl p-4 flex justify-between ">
                                 <div className="flex flex-col gap-3 text-left">
                                     <p className="text-[#FFFFFF]/50 font-medium text-sm">Vesting Period</p>
-                                    <p className="text-[#FFFFFF] font-medium text-sm">{timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)) * 1000)} - {timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration) + parseInt(vestingPDA.amount < new anchor.BN(100_000_000000) ? vestingPDA.vestingDurationShort : vestingPDA.vestingDurationLong)) * 1000)}</p>
+                                    <p className="text-[#FFFFFF] font-medium text-sm">
+                                        {timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)) * 1000)} - {
+                                            timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration) + getVestingDuration(userPDA.totalAllocation, vestingPDA.vestingDurationX1)) * 1000)
+                                        }
+                                    </p>
                                 </div>
                                 <div className="flex flex-col gap-3 text-right">
                                     <p className="text-[#FFFFFF]/50 font-medium text-sm">Unlock Amount</p>
@@ -180,7 +181,7 @@ const InvestorSale = () => {
                                 <div className='h-1 bg-green-700' style={{ width: `${Math.round(vestedRate * 100)}%` }} />
                             </div>
                         </div>
-                        <button onClick={handleClaim} className="rounded-xl border border-[#202020] bg-gradient-to-b from-[#FFFFFF] to-[#B5B5B5] w-full p-5 font-semibold text-[#000000] text-base hover:opacity-80">Claim {Math.floor(Math.max(0, claimableAmount) * 100) / 100} Available Tokens</button>
+                        <button onClick={handleClaim} disabled={claimableAmount <= 0} className="rounded-xl border border-[#202020] bg-gradient-to-b from-[#FFFFFF] to-[#B5B5B5] w-full p-5 font-semibold text-[#000000] text-base hover:opacity-80 disabled:cursor-not-allowed">Claim {Math.floor(Math.max(0, claimableAmount) * 100) / 100} Available Tokens</button>
                     </div>
                 </div>
             }

@@ -2,6 +2,7 @@ import * as anchor from "@coral-xyz/anchor";
 import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { getCurrentTimestamp, getUserInfoPDA, getVestingPDA } from "../services/solana";
+import { getCliffDuration, getInitialUnlockRate, getVestingDuration } from "../utils";
 type StoreType = {
     publicKey: anchor.web3.PublicKey | undefined,
     buttonState: "connecting" | "connected" | "disconnecting" | "has-wallet" | "no-wallet",
@@ -64,7 +65,6 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
         }
     }, [vestingPDA])
     useEffect(() => {
-        if (!userPDA) return
         if (!vestingPDA) return
         (async () => {
             const tsp_saleEnd = parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)
@@ -72,13 +72,16 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
             if (parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration) < curTimestamp) {
                 setSaleEnded(true)
             }
+            if (!userPDA) return
             const time_since_saleEnd = curTimestamp - tsp_saleEnd
-            const vesting_duration = parseInt(vestingPDA.amount < new anchor.BN(100_000_000000) ? vestingPDA.vestingDurationShort : vestingPDA.vestingDurationLong)
-            const vested_rate = Math.min(time_since_saleEnd / vesting_duration, 1)
+            const vesting_duration = getVestingDuration(userPDA.totalAllocation, vestingPDA.vestingDurationX1)
+            const cliff_duration = getCliffDuration(userPDA.totalAllocation, vestingPDA.vestingDurationX1)
+            const initialUnlockRate = getInitialUnlockRate(userPDA.totalAllocation)
+            const vested_rate = time_since_saleEnd <= 0 ? 0 : Math.min(time_since_saleEnd / vesting_duration, 1)
             setVestedRate(vested_rate)
-            const vesting_amount = parseInt(userPDA.totalAllocation) * 0.85 * vested_rate
+            const vesting_amount = time_since_saleEnd < cliff_duration ? 0 : parseInt(userPDA.totalAllocation) * (1 - initialUnlockRate) * vested_rate
             setUnlockedAmount(vesting_amount / 1_000_000)
-            const available_to_claim = (parseInt(userPDA.totalAllocation) * 0.15 + vesting_amount - parseInt(userPDA.claimedAmount)) / 1_000_000
+            const available_to_claim = time_since_saleEnd <= 0 ? 0 : (parseInt(userPDA.totalAllocation) * initialUnlockRate + vesting_amount - parseInt(userPDA.claimedAmount)) / 1_000_000
             setClaimableAmount(available_to_claim)
         })()
     }, [userPDA, vestingPDA])
