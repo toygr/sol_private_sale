@@ -5,7 +5,7 @@ import { useAmounts, useReferCode, useSaleEnded, useVestingPDA, useWalletPubKeyS
 import { promiseToast, showToast } from "../utils/toast"
 import { program } from "../anchor/setup"
 import { PublicKey } from "@solana/web3.js"
-import { getVestingPDA, processTxInToast } from "../services/solana"
+import { getCurrentTimestamp, getVestingPDA, processTxInToast } from "../services/solana"
 import { useWallet } from "@solana/wallet-adapter-react"
 
 const AdminView = () => {
@@ -18,6 +18,7 @@ const AdminView = () => {
     const [giveAmount, setGiveAmount] = useState(0)
     const [giveAddress, setGiveAddress] = useState("")
     const [referInfo, setReferInfo] = useState<{ code: number; amount: number; }[]>([])
+    const [vestingStartable, setVestingStartable] = useState(false)
     useEffect(() => {
         if (!vestingPDA) {
             setReferInfo([])
@@ -26,7 +27,11 @@ const AdminView = () => {
         setReferInfo(vestingPDA.referCodes.map((v, i) => ({
             code: v,
             amount: parseInt(vestingPDA.referAmounts[i]) / 1000000
-        })))
+        })));
+        (async () => {
+            const curTimestamp = await getCurrentTimestamp()
+            setVestingStartable(vestingPDA.startTime == 0 || curTimestamp >= parseInt(vestingPDA.startTime) + (parseInt(vestingPDA.saleDuration) + parseInt(vestingPDA.vestingDurationX1) * 6))
+        })()
     }, [vestingPDA])
     const giveToken = async () => {
         if (!publicKey) {
@@ -86,10 +91,37 @@ const AdminView = () => {
             error: "Your operation failed."
         })
     }
+    const startVesting = async () => {
+        promiseToast(new Promise(async (resolve, reject) => {
+            const tx = await program.methods.setVesting(
+                new anchor.BN(0), // Start time from now in sec
+                new anchor.BN(300), // Sale duration in sec 2*30*24*3600
+                new anchor.BN(120), // Vesting duration based X1 in sec 3*30*24*3600
+                new anchor.BN("10000000000") // Private sale amount 200000000000000
+            ).accounts({
+                user: publicKey
+            }).transaction()
+            await processTxInToast(
+                tx, sendTransaction,
+                () => setTimeout(
+                    () => {
+                        getVestingPDA().then(pda => setVestingPDA(pda))
+                    }, 1000),
+                resolve, reject)
+        }), {
+            pending: `Opening wallet...`,
+            error: "Your operation failed."
+        })
+    }
     return (
         <>
             <div className="border-[1px] border-[#1B1B1D] rounded-[28px] p-4 flex flex-col gap-4">
                 <p className="p-4 text-[#A6A6A6] font-medium text-base text-left">Private Sale <span className="italic text-red-700">Admin Page</span></p>
+                <div>
+                    <button onClick={startVesting} className="w-full bg-[#0D4D0D] border border-[#1B1B1D] rounded-xl flex items-center justify-center gap-3 text-[#DADADA] font-medium text-sm py-3 hover:opacity-80 disabled:cursor-not-allowed" disabled={!publicKey || !vestingStartable} >
+                        Start new vesting
+                    </button>
+                </div>
                 {isSaleEnded ?
                     <>
                         <div className="flex justify-between gap-4">
