@@ -168,7 +168,7 @@ const InvestorSale = () => {
                                     <p className="text-[#FFFFFF]/50 font-medium text-sm">Vesting Period</p>
                                     <p className="text-[#FFFFFF] font-medium text-sm">
                                         {timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)) * 1000)} - {
-                                            timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration) + getVestingDuration(userPDA.totalAllocation, vestingPDA.vestingDurationX1)) * 1000)
+                                            timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration) + parseInt(getVestingDuration(userPDA.totalAllocation, vestingPDA.vestingDurationX1))) * 1000)
                                         }
                                     </p>
                                 </div>
