@@ -1,5 +1,5 @@
 export type PrivateVesting = {
-  "address": "6wp9GzRLUDAKzn17mYbz5i7FvjZER3RfgcThB3oNN1HK",
+  "address": "J1VWHKtmL3a3a761jJTmafNis3nXawbqiSjeXSovFzu3",
   "metadata": {
     "name": "privateVesting",
     "version": "0.1.0",
@@ -48,7 +48,7 @@ export type PrivateVesting = {
         {
           "name": "admin",
           "writable": true,
-          "address": "6ubMCJm3AQNcmUG9gxe44VjhxwqMy8YWHhHbGqFc6jfC"
+          "address": "9ZdXRgSis3N8Rem8QwXBzjxg9MoaamD1t2eQLsMaBadh"
         },
         {
           "name": "userInfo",
@@ -307,7 +307,7 @@ export type PrivateVesting = {
       "accounts": [
         {
           "name": "mint",
-          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
+          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
         },
         {
           "name": "user",
@@ -774,7 +774,7 @@ export type PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
+          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
         },
         {
           "name": "tokenProgram",
@@ -1015,7 +1015,7 @@ export type PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
+          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
         },
         {
           "name": "tokenProgram",
@@ -1248,7 +1248,7 @@ export type PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
+          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
         },
         {
           "name": "tokenProgram",
@@ -1563,7 +1563,7 @@ export type PrivateVesting = {
   ]
 }
 export const IDL: PrivateVesting = {
-  "address": "6wp9GzRLUDAKzn17mYbz5i7FvjZER3RfgcThB3oNN1HK",
+  "address": "J1VWHKtmL3a3a761jJTmafNis3nXawbqiSjeXSovFzu3",
   "metadata": {
     "name": "privateVesting",
     "version": "0.1.0",
@@ -1612,7 +1612,7 @@ export const IDL: PrivateVesting = {
         {
           "name": "admin",
           "writable": true,
-          "address": "6ubMCJm3AQNcmUG9gxe44VjhxwqMy8YWHhHbGqFc6jfC"
+          "address": "9ZdXRgSis3N8Rem8QwXBzjxg9MoaamD1t2eQLsMaBadh"
         },
         {
           "name": "userInfo",
@@ -1871,7 +1871,7 @@ export const IDL: PrivateVesting = {
       "accounts": [
         {
           "name": "mint",
-          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
+          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
         },
         {
           "name": "user",
@@ -2338,7 +2338,7 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
+          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
         },
         {
           "name": "tokenProgram",
@@ -2579,7 +2579,7 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
+          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
         },
         {
           "name": "tokenProgram",
@@ -2812,7 +2812,7 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "EiGin8Xaf3uefW165oxjF23kGzaBKyoHjKNKuGpYYEXX"
+          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
         },
         {
           "name": "tokenProgram",
