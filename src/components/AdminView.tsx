@@ -21,6 +21,7 @@ const AdminView = () => {
     const [vestingStartable, setVestingStartable] = useState(false)
     useEffect(() => {
         if (!vestingPDA) {
+            setVestingStartable(true)
             setReferInfo([])
             return
         }
