@@ -5,7 +5,7 @@ import CountDown from "./CountDown";
 import InvestorSale from "./InvestorSale";
 import AdminView from './AdminView';
 import { useVestingPDA, useWalletPubKeyState } from '../store';
-const ADMIN_WALLET = "9ZdXRgSis3N8Rem8QwXBzjxg9MoaamD1t2eQLsMaBadh"
+const ADMIN_WALLET = "GhpDc9nfa6gMrhXmQqsaxuA2w45BE5t7FMDAznkXpDvB"
 const PrivateSale = () => {
   const { publicKey, buttonState } = useWalletPubKeyState()
   const { vestingPDA } = useVestingPDA()
