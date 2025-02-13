@@ -49,7 +49,7 @@ export const processTxInToast = async (tx: anchor.web3.Transaction, sendTransact
             success: "Transaction succeed. Click here to view transaction.",
             error: "Transaction failed!"
         }, {
-            onClick: () => window.open(`https://solscan.io/tx/${signature}?cluster=devnet`, "_blank")
+            onClick: () => window.open(`https://solscan.io/tx/${signature}`, "_blank")
         })
         resolve(null)
     } catch (error) {

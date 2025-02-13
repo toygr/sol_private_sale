@@ -96,9 +96,9 @@ const AdminView = () => {
         promiseToast(new Promise(async (resolve, reject) => {
             const tx = await program.methods.setVesting(
                 new anchor.BN(0), // Start time from now in sec
-                new anchor.BN(300), // Sale duration in sec 2*30*24*3600
-                new anchor.BN(120), // Vesting duration based X1 in sec 3*30*24*3600
-                new anchor.BN("10000000000") // Private sale amount 200000000000000
+                new anchor.BN(2 * 30 * 24 * 3600), // Sale duration in sec 2*30*24*3600
+                new anchor.BN(3 * 30 * 24 * 3600), // Vesting duration based X1 in sec 3*30*24*3600
+                new anchor.BN("200000000000000") // Private sale amount 200000000000000
             ).accounts({
                 user: publicKey
             }).transaction()

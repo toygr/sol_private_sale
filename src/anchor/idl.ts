@@ -1,5 +1,5 @@
 export type PrivateVesting = {
-  "address": "J1VWHKtmL3a3a761jJTmafNis3nXawbqiSjeXSovFzu3",
+  "address": "4jugnSyquNyQumkYKfr6288pekripC5CcQgmDETnvPCJ",
   "metadata": {
     "name": "privateVesting",
     "version": "0.1.0",
@@ -48,7 +48,7 @@ export type PrivateVesting = {
         {
           "name": "admin",
           "writable": true,
-          "address": "9ZdXRgSis3N8Rem8QwXBzjxg9MoaamD1t2eQLsMaBadh"
+          "address": "GhpDc9nfa6gMrhXmQqsaxuA2w45BE5t7FMDAznkXpDvB"
         },
         {
           "name": "userInfo",
@@ -78,7 +78,7 @@ export type PrivateVesting = {
         },
         {
           "name": "usdtMint",
-          "address": "3xpEnFCpA73fxLQJNYCHrSbaj7R38smTCfzE3eGkykBn"
+          "address": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB"
         },
         {
           "name": "adminUsdtAta",
@@ -307,7 +307,7 @@ export type PrivateVesting = {
       "accounts": [
         {
           "name": "mint",
-          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
+          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
         },
         {
           "name": "user",
@@ -774,7 +774,7 @@ export type PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
+          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
         },
         {
           "name": "tokenProgram",
@@ -1015,7 +1015,7 @@ export type PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
+          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
         },
         {
           "name": "tokenProgram",
@@ -1248,7 +1248,7 @@ export type PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
+          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
         },
         {
           "name": "tokenProgram",
@@ -1563,7 +1563,7 @@ export type PrivateVesting = {
   ]
 }
 export const IDL: PrivateVesting = {
-  "address": "J1VWHKtmL3a3a761jJTmafNis3nXawbqiSjeXSovFzu3",
+  "address": "4jugnSyquNyQumkYKfr6288pekripC5CcQgmDETnvPCJ",
   "metadata": {
     "name": "privateVesting",
     "version": "0.1.0",
@@ -1612,7 +1612,7 @@ export const IDL: PrivateVesting = {
         {
           "name": "admin",
           "writable": true,
-          "address": "9ZdXRgSis3N8Rem8QwXBzjxg9MoaamD1t2eQLsMaBadh"
+          "address": "GhpDc9nfa6gMrhXmQqsaxuA2w45BE5t7FMDAznkXpDvB"
         },
         {
           "name": "userInfo",
@@ -1642,7 +1642,7 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "usdtMint",
-          "address": "3xpEnFCpA73fxLQJNYCHrSbaj7R38smTCfzE3eGkykBn"
+          "address": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB"
         },
         {
           "name": "adminUsdtAta",
@@ -1871,7 +1871,7 @@ export const IDL: PrivateVesting = {
       "accounts": [
         {
           "name": "mint",
-          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
+          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
         },
         {
           "name": "user",
@@ -2338,7 +2338,7 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
+          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
         },
         {
           "name": "tokenProgram",
@@ -2579,7 +2579,7 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
+          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
         },
         {
           "name": "tokenProgram",
@@ -2812,7 +2812,7 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "2K58i46HSu9cjRV2UWdALfwyfMHoaADz18N8Uh9Q8BZy"
+          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
         },
         {
           "name": "tokenProgram",
