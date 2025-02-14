@@ -17,6 +17,7 @@ const InvestorSale = () => {
     const [initialUnlock, setInitialUnlock] = useState<number>(0)
     const [initialUnlockRate, setInitialUnlockRate] = useState<number>(0)
     const { referrerCode, setReferrerCode } = useReferCode()
+    const [isTokenListed, setTokenListed] = useState(false)
     const { sendTransaction } = useWallet()
     useEffect(() => {
         if (!userPDA) return
@@ -24,6 +25,7 @@ const InvestorSale = () => {
         const rate = getInitialUnlockRate(userPDA.totalAllocation)
         setInitialUnlockRate(rate * 100)
         setInitialUnlock(parseInt(userPDA.totalAllocation) * rate / 1_000_000);
+        setTokenListed(parseInt(vestingPDA.listedTime) > 0)
     }, [userPDA, vestingPDA])
     const buyToken = async (paySol: boolean) => {
         if (!publicKey) {
@@ -162,25 +164,38 @@ const InvestorSale = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="grid grid-cols-1 gap-2.5 pt-1 pb-6">
-                            <div className="bg-[#0C0C0C]/50 border border-[#191919] rounded-xl p-4 flex justify-between ">
-                                <div className="flex flex-col gap-3 text-left">
-                                    <p className="text-[#FFFFFF]/50 font-medium text-sm">Vesting Period</p>
-                                    <p className="text-[#FFFFFF] font-medium text-sm">
-                                        {timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)) * 1000)} - {
-                                            timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration) + parseInt(getVestingDuration(userPDA.totalAllocation, vestingPDA.vestingDurationX1))) * 1000)
-                                        }
-                                    </p>
+                        {isTokenListed ?
+                            <div className="grid grid-cols-1 gap-2.5 pt-1 pb-6">
+                                <div className="bg-[#0C0C0C]/50 border border-[#191919] rounded-xl p-4 flex justify-between ">
+                                    <div className="flex flex-col gap-3 text-left">
+                                        <p className="text-[#FFFFFF]/50 font-medium text-sm">Vesting Period</p>
+                                        <p className="text-[#FFFFFF] font-medium text-sm">
+                                            {timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)) * 1000)} - {
+                                                timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration) + parseInt(getVestingDuration(userPDA.totalAllocation, vestingPDA.vestingDurationX1))) * 1000)
+                                            }
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col gap-3 text-right">
+                                        <p className="text-[#FFFFFF]/50 font-medium text-sm">Unlock Amount</p>
+                                        <p className="text-[#26D2A0] font-medium text-sm">{Math.floor(Math.max(0, unlockedAmount) * 100) / 100} Tokens</p>
+                                    </div>
                                 </div>
-                                <div className="flex flex-col gap-3 text-right">
-                                    <p className="text-[#FFFFFF]/50 font-medium text-sm">Unlock Amount</p>
-                                    <p className="text-[#26D2A0] font-medium text-sm">{Math.floor(Math.max(0, unlockedAmount) * 100) / 100} Tokens</p>
+                                <div className='w-full h-1 bg-gray-800 relative'>
+                                    <div className='h-1 bg-green-700' style={{ width: `${Math.round(vestedRate * 100)}%` }} />
                                 </div>
                             </div>
-                            <div className='w-full h-1 bg-gray-800 relative'>
-                                <div className='h-1 bg-green-700' style={{ width: `${Math.round(vestedRate * 100)}%` }} />
+                            :
+                            <div className="grid grid-cols-1 gap-2.5 pt-1 pb-6">
+                                <div className="bg-[#0C0C0C]/50 border border-[#191919] rounded-xl p-4 flex justify-between ">
+                                    <div className="flex flex-col gap-3 text-left">
+                                        <p className="text-[#FFFFFF]/50 font-medium text-sm">Vesting Period</p>
+                                        <p className="text-[#FFFFFF] font-medium text-sm">
+                                            Token is not listed yet
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        }
                         <button onClick={handleClaim} disabled={claimableAmount <= 0} className="rounded-xl border border-[#202020] bg-gradient-to-b from-[#FFFFFF] to-[#B5B5B5] w-full p-5 font-semibold text-[#000000] text-base hover:opacity-80 disabled:cursor-not-allowed">Claim {Math.floor(Math.max(0, claimableAmount) * 100) / 100} Available Tokens</button>
                     </div>
                 </div>

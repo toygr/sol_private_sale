@@ -19,9 +19,11 @@ const AdminView = () => {
     const [giveAddress, setGiveAddress] = useState("")
     const [referInfo, setReferInfo] = useState<{ code: number; amount: number; }[]>([])
     const [vestingStartable, setVestingStartable] = useState(false)
+    const [isTokenListed, setTokenListed] = useState(false)
     useEffect(() => {
         if (!vestingPDA) {
             setVestingStartable(true)
+            setTokenListed(true)
             setReferInfo([])
             return
         }
@@ -29,6 +31,7 @@ const AdminView = () => {
             code: v,
             amount: parseInt(vestingPDA.referAmounts[i]) / 1000000
         })));
+        setTokenListed(parseInt(vestingPDA.listedTime) > 0);
         (async () => {
             const curTimestamp = await getCurrentTimestamp()
             setVestingStartable(vestingPDA.startTime == 0 || curTimestamp >= parseInt(vestingPDA.startTime) + (parseInt(vestingPDA.saleDuration) + parseInt(vestingPDA.vestingDurationX1) * 6))
@@ -114,13 +117,33 @@ const AdminView = () => {
             error: "Your operation failed."
         })
     }
+    const listToken = async () => {
+        promiseToast(new Promise(async (resolve, reject) => {
+            const tx = await program.methods.listToken().accounts({
+                user: publicKey
+            }).transaction()
+            await processTxInToast(
+                tx, sendTransaction,
+                () => setTimeout(
+                    () => {
+                        getVestingPDA().then(pda => setVestingPDA(pda))
+                    }, 1000),
+                resolve, reject)
+        }), {
+            pending: `Opening wallet...`,
+            error: "Your operation failed."
+        })
+    }
     return (
         <>
             <div className="border-[1px] border-[#1B1B1D] rounded-[28px] p-4 flex flex-col gap-4">
                 <p className="p-4 text-[#A6A6A6] font-medium text-base text-left">Private Sale <span className="italic text-red-700">Admin Page</span></p>
-                <div>
+                <div className="flex justify-between items-center gap-4">
                     <button onClick={startVesting} className="w-full bg-[#0D4D0D] border border-[#1B1B1D] rounded-xl flex items-center justify-center gap-3 text-[#DADADA] font-medium text-sm py-3 hover:opacity-80 disabled:cursor-not-allowed" disabled={!publicKey || !vestingStartable} >
-                        Start new vesting
+                        Start Private Sale
+                    </button>
+                    <button onClick={listToken} className="w-full bg-[#0D4D0D] border border-[#1B1B1D] rounded-xl flex items-center justify-center gap-3 text-[#DADADA] font-medium text-sm py-3 hover:opacity-80 disabled:cursor-not-allowed" disabled={!publicKey || isTokenListed} >
+                        Start vesting before list
                     </button>
                 </div>
                 {isSaleEnded ?

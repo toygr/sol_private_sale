@@ -1,5 +1,5 @@
 export type PrivateVesting = {
-  "address": "4jugnSyquNyQumkYKfr6288pekripC5CcQgmDETnvPCJ",
+  "address": "2dn5aBpMLEXZXrhdq8CsNVsWt9Qe5B1uv1T7E6VYcydb",
   "metadata": {
     "name": "privateVesting",
     "version": "0.1.0",
@@ -307,7 +307,7 @@ export type PrivateVesting = {
       "accounts": [
         {
           "name": "mint",
-          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
+          "address": "DsnLVJskUmgNmamzX94JXT85EE2AxtjbXWFoFhKm8Pca"
         },
         {
           "name": "user",
@@ -774,7 +774,7 @@ export type PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
+          "address": "DsnLVJskUmgNmamzX94JXT85EE2AxtjbXWFoFhKm8Pca"
         },
         {
           "name": "tokenProgram",
@@ -783,6 +783,51 @@ export type PrivateVesting = {
         {
           "name": "associatedTokenProgram",
           "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "listToken",
+      "discriminator": [
+        210,
+        166,
+        134,
+        74,
+        206,
+        157,
+        92,
+        138
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vesting",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  101,
+                  115,
+                  116,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
         },
         {
           "name": "systemProgram",
@@ -1015,7 +1060,7 @@ export type PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
+          "address": "DsnLVJskUmgNmamzX94JXT85EE2AxtjbXWFoFhKm8Pca"
         },
         {
           "name": "tokenProgram",
@@ -1248,7 +1293,7 @@ export type PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
+          "address": "DsnLVJskUmgNmamzX94JXT85EE2AxtjbXWFoFhKm8Pca"
         },
         {
           "name": "tokenProgram",
@@ -1356,6 +1401,11 @@ export type PrivateVesting = {
       "code": 6007,
       "name": "codeCountOverflow",
       "msg": "Code count overflow"
+    },
+    {
+      "code": 6008,
+      "name": "tokenNotListed",
+      "msg": "Token is not listed yet"
     }
   ],
   "types": [
@@ -1531,6 +1581,10 @@ export type PrivateVesting = {
           },
           {
             "name": "saleDuration",
+            "type": "u64"
+          },
+          {
+            "name": "listedTime",
             "type": "u64"
           },
           {
@@ -1563,7 +1617,7 @@ export type PrivateVesting = {
   ]
 }
 export const IDL: PrivateVesting = {
-  "address": "4jugnSyquNyQumkYKfr6288pekripC5CcQgmDETnvPCJ",
+  "address": "2dn5aBpMLEXZXrhdq8CsNVsWt9Qe5B1uv1T7E6VYcydb",
   "metadata": {
     "name": "privateVesting",
     "version": "0.1.0",
@@ -1871,7 +1925,7 @@ export const IDL: PrivateVesting = {
       "accounts": [
         {
           "name": "mint",
-          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
+          "address": "DsnLVJskUmgNmamzX94JXT85EE2AxtjbXWFoFhKm8Pca"
         },
         {
           "name": "user",
@@ -2338,7 +2392,7 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
+          "address": "DsnLVJskUmgNmamzX94JXT85EE2AxtjbXWFoFhKm8Pca"
         },
         {
           "name": "tokenProgram",
@@ -2347,6 +2401,51 @@ export const IDL: PrivateVesting = {
         {
           "name": "associatedTokenProgram",
           "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "listToken",
+      "discriminator": [
+        210,
+        166,
+        134,
+        74,
+        206,
+        157,
+        92,
+        138
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "vesting",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  101,
+                  115,
+                  116,
+                  105,
+                  110,
+                  103
+                ]
+              }
+            ]
+          }
         },
         {
           "name": "systemProgram",
@@ -2579,7 +2678,7 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
+          "address": "DsnLVJskUmgNmamzX94JXT85EE2AxtjbXWFoFhKm8Pca"
         },
         {
           "name": "tokenProgram",
@@ -2812,7 +2911,7 @@ export const IDL: PrivateVesting = {
         },
         {
           "name": "mint",
-          "address": "DRrJvcshM5BgrysuwTRhAaaCq9u97i9UAksD8arVpbuE"
+          "address": "DsnLVJskUmgNmamzX94JXT85EE2AxtjbXWFoFhKm8Pca"
         },
         {
           "name": "tokenProgram",
@@ -2920,6 +3019,11 @@ export const IDL: PrivateVesting = {
       "code": 6007,
       "name": "codeCountOverflow",
       "msg": "Code count overflow"
+    },
+    {
+      "code": 6008,
+      "name": "tokenNotListed",
+      "msg": "Token is not listed yet"
     }
   ],
   "types": [
@@ -3095,6 +3199,10 @@ export const IDL: PrivateVesting = {
           },
           {
             "name": "saleDuration",
+            "type": "u64"
+          },
+          {
+            "name": "listedTime",
             "type": "u64"
           },
           {
