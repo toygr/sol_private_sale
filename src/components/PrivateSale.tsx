@@ -23,7 +23,7 @@ const PrivateSale = () => {
   return (
     <div className="pt-[158px] pb-[135px] px-2 font-britti">
       <div className="flex items-center justify-between text-fontPrimary">
-        <h1 className="text-[32px] font-semibold">Token Private Sale</h1>
+        <h1 className="text-[24px] font-semibold sm:text-[32px]">Token Private Sale</h1>
         <WalletMultiButton style={{ backgroundImage: "linear-gradient(rgb(38, 210, 160), rgb(2, 126, 90))" }} endIcon={
           publicKey ? <img className="rounded-full" src={`https://i.pravatar.cc/150?u=${publicKey}`} alt="Logo" /> : undefined
         }>
@@ -34,8 +34,16 @@ const PrivateSale = () => {
         <div className="absolute -top-3 -left-3 p-8 blur-3xl bg-[#FFFFFF]" />
         <div className="px-4">
           <div className="flex flex-col items-start justify-center px-4">
-            <div className="border-t-[3px] border-[#FFFFFF] inline-block py-5">
-              <img src="/Edith.png" className="w-[58px] h-[58px]" />
+            <div className="flex justify-between items-center w-[100%]">
+              <div className='border-[#FFFFFF] border-t-[3px] py-5'>
+                <img src="/Edith.png" className="w-[58px] h-[58px] "/>
+              </div>
+              <div className='flex justify-center items-center h-[58px] '>
+                <a href="https://edith.slite.page/p/cHIM-ANcYHuaF1/EDITH-Intelligence-Token-USDED" className="flex justify-center items-center h-[40px] rounded-[4px] border-[1px] border-[#1B1B1D] hover:bg-[#111111] p-2 gap-1">
+                  <img src="/doc.png" alt="Token docs" className='w-[28px] h-[28px]'/>
+                  <p>Token Doc</p>
+                </a>
+              </div>
             </div>
             <div className="py-5 pb-6">
               <span className="text-[#FFFFFF]/60 font-medium text-base">Private Sale Details</span>
@@ -43,8 +51,8 @@ const PrivateSale = () => {
           </div>
           <hr className=" border-[#FFFFFF]/20 border-dashed" />
 
-          <div className="flex w-full px-4 pb-8 pt-7">
-            <div className="flex w-full flex-col items-start justify-start gap-3">
+          <div className="flex w-full px-4 pb-8 pt-7 flex-col gap-6 sm:flex-row">
+            <div className="flex w-full flex-col items-start justify-start gap-2">
               <span className="text-[#FFFFFF]/50 font-medium text-sm pl-2 border-l border-[#878787]">Sale Period</span>
               <span className="text-[#FFFFFF] font-medium text-[20px] pl-2 border-l border-[#FFFFFF38]">
                 {vestingPDA ? timestamp2date(parseInt(vestingPDA.startTime) * 1000) : "-"}
@@ -52,7 +60,7 @@ const PrivateSale = () => {
                 {vestingPDA ? timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)) * 1000) : "-"}
               </span>
             </div>
-            <div className="flex w-full flex-col items-start gap-3 text-left">
+            <div className="flex w-full flex-col items-start gap-2 text-left">
               <span className="text-[#FFFFFF]/50 font-medium text-sm pl-2 border-l border-[#878787]">Token Price</span>
               <div className="text-[#FFFFFF] font-medium text-[20px] pl-2 border-l border-[#FFFFFF38]">
                 1 Token = $0.025 <br />
