@@ -156,7 +156,10 @@ const InvestorSale = () => {
                                 <div className="flex flex-col gap-3 text-left">
                                     <p className="text-[#FFFFFF]/50 font-medium text-sm">Initial Unlock</p>
                                     <p className="text-[#FFFFFF] font-medium text-sm">
-                                        {timestamp2date((parseInt(vestingPDA.startTime)) * 1000)} - {timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)) * 1000)}</p>
+                                        {parseInt(vestingPDA.listedTime) === 0 ?
+                                            <>Not Unlocked yet</> :
+                                            <>Unlock time {timestamp2date((parseInt(vestingPDA.listedTime)) * 1000)}</>}
+                                    </p>
                                 </div>
                                 <div className="flex flex-col gap-3 text-right">
                                     <p className="text-[#FFFFFF]/50 font-medium text-sm">Unlock Amount</p>
@@ -170,8 +173,8 @@ const InvestorSale = () => {
                                     <div className="flex flex-col gap-3 text-left">
                                         <p className="text-[#FFFFFF]/50 font-medium text-sm">Vesting Period</p>
                                         <p className="text-[#FFFFFF] font-medium text-sm">
-                                            {timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)) * 1000)} - {
-                                                timestamp2date((parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration) + parseInt(getVestingDuration(userPDA.totalAllocation, vestingPDA.vestingDurationX1))) * 1000)
+                                            {timestamp2date((parseInt(vestingPDA.listedTime)) * 1000)} - {
+                                                timestamp2date((parseInt(vestingPDA.listedTime) + parseInt(getVestingDuration(userPDA.totalAllocation, vestingPDA.vestingDurationX1))) * 1000)
                                             }
                                         </p>
                                     </div>

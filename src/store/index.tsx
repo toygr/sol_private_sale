@@ -67,21 +67,22 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         if (!vestingPDA) return
         (async () => {
-            const tsp_saleEnd = parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration)
+            const tsp_listedToken = parseInt(vestingPDA.listedTime)
             const curTimestamp = await getCurrentTimestamp()
             if (parseInt(vestingPDA.startTime) + parseInt(vestingPDA.saleDuration) < curTimestamp) {
                 setSaleEnded(true)
             }
             if (!userPDA) return
-            const time_since_saleEnd = curTimestamp - tsp_saleEnd
+            if (tsp_listedToken === 0) return
+            const time_since_token_listed = curTimestamp - tsp_listedToken
             const vesting_duration = getVestingDuration(userPDA.totalAllocation, vestingPDA.vestingDurationX1)
             const cliff_duration = getCliffDuration(userPDA.totalAllocation, vestingPDA.vestingDurationX1)
             const initialUnlockRate = getInitialUnlockRate(userPDA.totalAllocation)
-            const vested_rate = time_since_saleEnd <= 0 ? 0 : Math.min(time_since_saleEnd / vesting_duration, 1)
+            const vested_rate = time_since_token_listed <= 0 ? 0 : Math.min(time_since_token_listed / vesting_duration, 1)
             setVestedRate(vested_rate)
-            const vesting_amount = time_since_saleEnd < cliff_duration ? 0 : parseInt(userPDA.totalAllocation) * (1 - initialUnlockRate) * vested_rate
+            const vesting_amount = time_since_token_listed < cliff_duration ? 0 : parseInt(userPDA.totalAllocation) * (1 - initialUnlockRate) * vested_rate
             setUnlockedAmount(vesting_amount / 1_000_000)
-            const available_to_claim = time_since_saleEnd <= 0 ? 0 : (parseInt(userPDA.totalAllocation) * initialUnlockRate + vesting_amount - parseInt(userPDA.claimedAmount)) / 1_000_000
+            const available_to_claim = time_since_token_listed <= 0 ? 0 : (parseInt(userPDA.totalAllocation) * initialUnlockRate + vesting_amount - parseInt(userPDA.claimedAmount)) / 1_000_000
             setClaimableAmount(available_to_claim)
         })()
     }, [userPDA, vestingPDA])

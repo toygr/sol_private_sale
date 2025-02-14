@@ -34,7 +34,11 @@ const AdminView = () => {
         setTokenListed(parseInt(vestingPDA.listedTime) > 0);
         (async () => {
             const curTimestamp = await getCurrentTimestamp()
-            setVestingStartable(vestingPDA.startTime == 0 || curTimestamp >= parseInt(vestingPDA.startTime) + (parseInt(vestingPDA.saleDuration) + parseInt(vestingPDA.vestingDurationX1) * 6))
+            if (parseInt(vestingPDA.listedTime) === 0) {
+                setVestingStartable(false)
+            } else {
+                setVestingStartable(vestingPDA.startTime == 0 || curTimestamp >= parseInt(vestingPDA.listedTime) + parseInt(vestingPDA.vestingDurationX1) * 6)
+            }
         })()
     }, [vestingPDA])
     const giveToken = async () => {
