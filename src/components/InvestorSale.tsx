@@ -91,19 +91,27 @@ const InvestorSale = () => {
         <>
             <div className="border-[1px] border-[#1B1B1D] rounded-[28px] p-4 flex flex-col gap-4">
                 <p className="p-4 text-[#A6A6A6] font-medium text-base text-left">Private Sale Details</p>
-                <div className="flex items-end w-full gap-2">
+                <div className="flex items-end w-full gap-2 flex-col sm:flex-row">
                     <div className="w-full">
                         {vestingPDA && <p className="text-left">
                             Available amount you can buy: {buyableAmount}
                         </p>}
-                        <input onChange={e => setBuyAmount(Number(e.target.value))} value={buyAmount} placeholder="Enter Amount" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl" />
+                        <div className="relative">
+                            <input  onChange={e => setBuyAmount(Number(e.target.value))} 
+                                    value={buyAmount} placeholder="Enter Amount" 
+                                    className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl" />
+                            <span className="absolute right-[16px] top-1/2 transform -translate-y-1/2 text-[#777777]">{buyAmount*0.025} USDT</span>
+                        </div>
                     </div>
                     <div className="text-left">
                         <span>Referrer Code(Optional)</span>
-                        <input onChange={e => setReferrerCode(e.target.value.trim())} value={userPDA ? userPDA.referCode > 0 ? userPDA.referCode : referrerCode : referrerCode} disabled={!!userPDA && userPDA.referCode > 0} placeholder="eg:12345" className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl disabled:cursor-not-allowed disabled:text-white/50 disabled:font-bold" />
+                        <input onChange={e => setReferrerCode(e.target.value.trim())} 
+                                value={userPDA ? userPDA.referCode > 0 ? userPDA.referCode : referrerCode : referrerCode} 
+                                disabled={!!userPDA && userPDA.referCode > 0} placeholder="eg:12345" 
+                                className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl disabled:cursor-not-allowed disabled:text-white/50 disabled:font-bold" />
                     </div>
                 </div>
-                <div className="flex justify-between gap-4">
+                <div className="flex flex-col justify-between gap-4 sm:flex-row">
                     <button onClick={() => buyToken(true)} className="w-full bg-[#0D0D0D] border border-[#1B1B1D] rounded-xl flex items-center justify-center gap-3 text-[#DADADA] font-medium text-sm py-3 hover:opacity-80 disabled:cursor-not-allowed" disabled={!publicKey || isSaleEnded}>
                         <img src="/SOL.png" className="w-6 h-6" />
                         Buy token with SOL
