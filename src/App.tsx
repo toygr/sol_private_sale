@@ -1,4 +1,4 @@
-import PrivateSale from './components/PrivateSale'
+// import PrivateSale from './components/PrivateSale'
 import './App.css'
 import { StoreProvider } from './store'
 import SolanaWalletProvider from './store/SolanaWalletProvider'
@@ -6,7 +6,10 @@ function App() {
   return (
     <SolanaWalletProvider>
       <StoreProvider>
-        <PrivateSale />
+        {/* <PrivateSale /> */}
+        <div>
+          Coming Soon
+        </div>
       </StoreProvider>
     </SolanaWalletProvider>
   )
