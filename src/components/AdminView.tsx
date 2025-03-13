@@ -34,11 +34,7 @@ const AdminView = () => {
         setTokenListed(parseInt(vestingPDA.listedTime) > 0);
         (async () => {
             const curTimestamp = await getCurrentTimestamp()
-            if (parseInt(vestingPDA.listedTime) === 0) {
-                setVestingStartable(false)
-            } else {
-                setVestingStartable(vestingPDA.startTime == 0 || curTimestamp >= parseInt(vestingPDA.listedTime) + parseInt(vestingPDA.vestingDurationX1) * 6)
-            }
+            setVestingStartable(vestingPDA.startTime == 0 || curTimestamp >= parseInt(vestingPDA.listedTime) + parseInt(vestingPDA.vestingDurationX1) * 6)
         })()
     }, [vestingPDA])
     const giveToken = async () => {
@@ -101,11 +97,13 @@ const AdminView = () => {
     }
     const startVesting = async () => {
         promiseToast(new Promise(async (resolve, reject) => {
+            const curTimestamp = await getCurrentTimestamp()
+            const Apr30Timestamp = (new Date(2025, 4 - 1, 30)).getTime() / 1000
             const tx = await program.methods.setVesting(
                 new anchor.BN(0), // Start time from now in sec
-                new anchor.BN(2 * 30 * 24 * 3600), // Sale duration in sec 2*30*24*3600
-                new anchor.BN(3 * 30 * 24 * 3600), // Vesting duration based X1 in sec 3*30*24*3600
-                new anchor.BN("200000000000000") // Private sale amount 200000000000000
+                new anchor.BN(Apr30Timestamp - curTimestamp), // Sale duration in sec 2*30*24*3600
+                new anchor.BN(2 * 30 * 24 * 3600), // Vesting duration based X1 in sec 2*30*24*3600
+                new anchor.BN("30000000000000") // Private sale amount 30_000000_000000
             ).accounts({
                 user: publicKey
             }).transaction()

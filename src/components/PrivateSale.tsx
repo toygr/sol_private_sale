@@ -2,10 +2,10 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { useMemo } from 'react';
 import { LABELS, timestamp2date } from '../utils';
 import CountDown from "./CountDown";
-import InvestorSale from "./InvestorSale";
+// import InvestorSale from "./InvestorSale";
 import AdminView from './AdminView';
 import { useVestingPDA, useWalletPubKeyState } from '../store';
-const ADMIN_WALLET = "GhpDc9nfa6gMrhXmQqsaxuA2w45BE5t7FMDAznkXpDvB"
+const ADMIN_WALLET = "2s419ZBoudi2iBG7TfGUsmS1jiX8FXcNJeSN8MBASzDq"
 const PrivateSale = () => {
   const { publicKey, buttonState } = useWalletPubKeyState()
   const { vestingPDA } = useVestingPDA()
@@ -36,11 +36,11 @@ const PrivateSale = () => {
           <div className="flex flex-col items-start justify-center px-4">
             <div className="flex justify-between items-center w-[100%]">
               <div className='border-[#FFFFFF] border-t-[3px] py-5'>
-                <img src="/Edith.png" className="w-[58px] h-[58px] "/>
+                <img src="/Edith.png" className="w-[58px] h-[58px] " />
               </div>
               <div className='flex justify-center items-center h-[58px] '>
                 <a href="https://edith.slite.page/p/cHIM-ANcYHuaF1/EDITH-Intelligence-Token-USDED" className="flex justify-center items-center h-[40px] rounded-[4px] border-[1px] border-[#1B1B1D] hover:bg-[#111111] p-2 gap-1">
-                  <img src="/doc.png" alt="Token docs" className='w-[28px] h-[28px]'/>
+                  <img src="/doc.png" alt="Token docs" className='w-[28px] h-[28px]' />
                   <p>Token Doc</p>
                 </a>
               </div>
@@ -72,7 +72,9 @@ const PrivateSale = () => {
         </div>
         {publicKey?.toBase58() === ADMIN_WALLET ?
           <AdminView /> :
-          <InvestorSale />}
+          // <InvestorSale />
+          <></>
+        }
       </div>
 
       <div className="absolute top-[60px] left-0 w-full border-t-2 border-[#FFFFFF14]"></div>
