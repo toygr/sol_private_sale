@@ -100,7 +100,7 @@ const InvestorSale = () => {
                             <input  onChange={e => setBuyAmount(Number(e.target.value))} 
                                     value={buyAmount} placeholder="Enter Amount" 
                                     className="w-full bg-[#010101] border border-[#1B1B1D] p-4 rounded-xl" />
-                            <span className="absolute right-[16px] top-1/2 transform -translate-y-1/2 text-[#777777]">{Number((buyAmount*0.025).toFixed(3))} USDT</span>
+                            <span className="absolute right-[16px] top-1/2 transform -translate-y-1/2 text-[#777777]">{Number((buyAmount*0.01).toFixed(3))} USDT</span>
                         </div>
                     </div>
                     <div className="text-left">

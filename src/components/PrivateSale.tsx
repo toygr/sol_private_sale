@@ -63,7 +63,7 @@ const PrivateSale = () => {
             <div className="flex w-full flex-col items-start gap-2 text-left">
               <span className="text-[#FFFFFF]/50 font-medium text-sm pl-2 border-l border-[#878787]">Token Price</span>
               <div className="text-[#FFFFFF] font-medium text-[20px] pl-2 border-l border-[#FFFFFF38]">
-                1 Token = $0.025 <br />
+                1 Token = $0.01 <br />
                 <span className='text-[14px] text-white/50'>1% discount if providing refer code</span>
               </div>
             </div>
