@@ -20,7 +20,7 @@ const CountDown = () => {
         const timestamp = Math.floor(Math.max(0, parseInt(ref_vesintPDA.current.startTime) + parseInt(ref_vesintPDA.current.saleDuration) - Math.floor((new Date().getTime()) / 1000) + GlobalVars.ts_diff))
         setData({
             days: Math.floor(timestamp / 86400),
-            hours: Math.floor(timestamp / 3600) % 60,
+            hours: Math.floor(timestamp / 3600) % 24,
             minutes: Math.floor(timestamp / 60) % 60,
             seconds: timestamp % 60,
         })
