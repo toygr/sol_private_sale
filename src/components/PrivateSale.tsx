@@ -2,7 +2,7 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { useMemo } from 'react';
 import { LABELS, timestamp2date } from '../utils';
 import CountDown from "./CountDown";
-// import InvestorSale from "./InvestorSale";
+import InvestorSale from "./InvestorSale";
 import AdminView from './AdminView';
 import { useVestingPDA, useWalletPubKeyState } from '../store';
 const ADMIN_WALLET = "2s419ZBoudi2iBG7TfGUsmS1jiX8FXcNJeSN8MBASzDq"
@@ -72,8 +72,7 @@ const PrivateSale = () => {
         </div>
         {publicKey?.toBase58() === ADMIN_WALLET ?
           <AdminView /> :
-          // <InvestorSale />
-          <></>
+          <InvestorSale />
         }
       </div>
 
