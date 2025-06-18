@@ -18,7 +18,7 @@ const AdminView = () => {
     const [giveAmount, setGiveAmount] = useState(0)
     const [giveAddress, setGiveAddress] = useState("")
     const [referInfo, setReferInfo] = useState<{ code: number; amount: number; }[]>([])
-    const [vestingStartable, setVestingStartable] = useState(false)
+    const [vestingStartable, setVestingStartable] = useState(true) //!TODO: false
     const [isTokenListed, setTokenListed] = useState(false)
     useEffect(() => {
         if (!vestingPDA) {
@@ -98,12 +98,12 @@ const AdminView = () => {
     const startVesting = async () => {
         promiseToast(new Promise(async (resolve, reject) => {
             const curTimestamp = await getCurrentTimestamp()
-            const Apr30Timestamp = (new Date(2025, 4 - 1, 30)).getTime() / 1000
+            const Apr30Timestamp = (new Date(2025, 7 - 1, 20)).getTime() / 1000
             const tx = await program.methods.setVesting(
                 new anchor.BN(0), // Start time from now in sec
                 new anchor.BN(Apr30Timestamp - curTimestamp), // Sale duration in sec 2*30*24*3600
                 new anchor.BN(2 * 30 * 24 * 3600), // Vesting duration based X1 in sec 2*30*24*3600
-                new anchor.BN("30000000000000") // Private sale amount 30_000000_000000
+                new anchor.BN("20000000000000") // Private sale amount 20_000000_000000
             ).accounts({
                 user: publicKey
             }).transaction()
