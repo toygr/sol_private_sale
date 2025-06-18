@@ -32,10 +32,10 @@ const AdminView = () => {
             amount: parseInt(vestingPDA.referAmounts[i]) / 1000000
         })));
         setTokenListed(parseInt(vestingPDA.listedTime) > 0);
-        (async () => {
-            const curTimestamp = await getCurrentTimestamp()
-            setVestingStartable(vestingPDA.startTime == 0 || (parseInt(vestingPDA.listedTime) > 0 && curTimestamp >= parseInt(vestingPDA.listedTime) + parseInt(vestingPDA.vestingDurationX1) * 6))
-        })()
+        // (async () => {
+        //     const curTimestamp = await getCurrentTimestamp()
+        //     setVestingStartable(vestingPDA.startTime == 0 || (parseInt(vestingPDA.listedTime) > 0 && curTimestamp >= parseInt(vestingPDA.listedTime) + parseInt(vestingPDA.vestingDurationX1) * 6))
+        // })()
     }, [vestingPDA])
     const giveToken = async () => {
         if (!publicKey) {
