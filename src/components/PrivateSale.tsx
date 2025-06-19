@@ -23,7 +23,7 @@ const PrivateSale = () => {
   return (
     <div className="pt-[158px] pb-[135px] px-2 font-britti">
       <div className="flex items-center justify-between text-fontPrimary">
-        <h1 className="text-[24px] font-semibold sm:text-[32px]">Token Private Sale</h1>
+        <h1 className="text-[24px] font-semibold sm:text-[32px]">Token Private Sale Phase 2</h1>
         <WalletMultiButton style={{ backgroundImage: "linear-gradient(rgb(38, 210, 160), rgb(2, 126, 90))" }} endIcon={
           publicKey ? <img className="rounded-full" src={`https://i.pravatar.cc/150?u=${publicKey}`} alt="Logo" /> : undefined
         }>
@@ -63,7 +63,7 @@ const PrivateSale = () => {
             <div className="flex w-full flex-col items-start gap-2 text-left">
               <span className="text-[#FFFFFF]/50 font-medium text-sm pl-2 border-l border-[#878787]">Token Price</span>
               <div className="text-[#FFFFFF] font-medium text-[20px] pl-2 border-l border-[#FFFFFF38]">
-                1 Token = $0.01 <br />
+                1 Token = $0.025 <br />
                 <span className='text-[14px] text-white/50'>1% discount if providing refer code</span>
               </div>
             </div>

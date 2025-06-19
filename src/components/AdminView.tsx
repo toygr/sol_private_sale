@@ -18,7 +18,7 @@ const AdminView = () => {
     const [giveAmount, setGiveAmount] = useState(0)
     const [giveAddress, setGiveAddress] = useState("")
     const [referInfo, setReferInfo] = useState<{ code: number; amount: number; }[]>([])
-    const [vestingStartable, setVestingStartable] = useState(true) //!TODO: false
+    const [vestingStartable, setVestingStartable] = useState(false)
     const [isTokenListed, setTokenListed] = useState(false)
     useEffect(() => {
         if (!vestingPDA) {
