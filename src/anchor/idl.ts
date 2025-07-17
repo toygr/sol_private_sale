@@ -51,6 +51,11 @@ export type PrivateVesting = {
           "address": "2s419ZBoudi2iBG7TfGUsmS1jiX8FXcNJeSN8MBASzDq"
         },
         {
+          "name": "madmin",
+          "writable": true,
+          "address": "2s419ZzAVEZY5fK6QuGywFTsJiD4v59XU4kLkkC3bsJ3"
+        },
+        {
           "name": "userInfo",
           "writable": true,
           "pda": {
@@ -88,6 +93,96 @@ export type PrivateVesting = {
               {
                 "kind": "account",
                 "path": "admin"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "usdtMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "madminUsdtAta",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "madmin"
               },
               {
                 "kind": "const",
@@ -1669,6 +1764,11 @@ export const IDL: PrivateVesting = {
           "address": "2s419ZBoudi2iBG7TfGUsmS1jiX8FXcNJeSN8MBASzDq"
         },
         {
+          "name": "madmin",
+          "writable": true,
+          "address": "2s419ZzAVEZY5fK6QuGywFTsJiD4v59XU4kLkkC3bsJ3"
+        },
+        {
           "name": "userInfo",
           "writable": true,
           "pda": {
@@ -1706,6 +1806,96 @@ export const IDL: PrivateVesting = {
               {
                 "kind": "account",
                 "path": "admin"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "usdtMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "madminUsdtAta",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "madmin"
               },
               {
                 "kind": "const",
